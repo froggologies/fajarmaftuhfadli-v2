@@ -3,74 +3,106 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Fajar Maftuh Fadli">
-	<div
-		class="relative min-h-screen flex items-center justify-center overflow-hidden"
-	>
-		<!-- Background effects -->
-		<div class="absolute inset-0 z-0">
-			<div
-				class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"
-			>
+	<div class="snap-y snap-mandatory max-h-screen overflow-y-scroll">
+		<div
+			class="snap-center relative min-h-screen flex items-center justify-center overflow-hidden"
+		>
+			<!-- Background effects -->
+			<div class="absolute inset-0 z-0">
+				<div
+					class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"
+				>
+				</div>
+				<div
+					class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"
+				>
+				</div>
 			</div>
+
+			<!-- Hero Content -->
 			<div
-				class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"
+				class="relative z-10 max-w-4xl mx-auto p-6 text-center space-y-8 flex flex-col items-center"
 			>
+				<!-- Badge -->
+				<div
+					class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-800/50 border border-slate-700 text-slate-300 backdrop-blur-sm"
+				>
+					<span
+						class="flex h-2 w-2 rounded-full bg-emerald-500 mr-2 animate-pulse"
+					></span>
+					Available for new opportunities
+				</div>
+
+				<!-- Main Title -->
+				<div class="space-y-4">
+					<h1
+						class="text-5xl md:text-7xl font-extrabold tracking-tight"
+					>
+						Hey, I'm <br class="md:hidden" />
+						<span
+							class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-emerald-400"
+						>
+							Fajar Maftuh Fadli
+						</span>
+					</h1>
+					<p class="text-xl md:text-2xl font-medium text-slate-400">
+						DevOps Engineer <span class="text-slate-600 px-2"
+							>•</span
+						> Cloud Architect <span class="text-slate-600 px-2"
+							>•</span
+						> Automation
+					</p>
+				</div>
+
+				<!-- Description -->
+				<p
+					class="max-w-2xl text-lg text-slate-400 leading-relaxed mx-auto"
+				>
+					I design, automate, and secure cloud infrastructure that
+					scales — from startups to enterprise systems. Specializing
+					in GCP, Terraform, monitoring, and reliability engineering.
+				</p>
+
+				<!-- CTA Buttons -->
+				<div
+					class="flex w-fit flex-col sm:flex-row items-center justify-center gap-4"
+				>
+					<a
+						href="#contact"
+						class="px-8 py-3 w-full rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-lg shadow-blue-500/25"
+					>
+						Get in touch
+					</a>
+					<a
+						href="#about"
+						class="px-8 py-3 min-w-fit rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-medium transition-all"
+					>
+						View my work
+					</a>
+				</div>
 			</div>
 		</div>
 
-		<!-- Hero Content -->
 		<div
-			class="relative z-10 max-w-4xl mx-auto p-6 text-center space-y-8 flex flex-col items-center"
+			class="snap-center relative min-h-screen flex items-center justify-center overflow-hidden"
 		>
-			<!-- Badge -->
-			<div
-				class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-800/50 border border-slate-700 text-slate-300 backdrop-blur-sm"
-			>
-				<span
-					class="flex h-2 w-2 rounded-full bg-emerald-500 mr-2 animate-pulse"
-				></span>
-				Available for new opportunities
+			<!-- Background effects -->
+			<div class="absolute inset-0 z-0">
+				<div
+					class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"
+				>
+				</div>
+				<div
+					class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"
+				>
+				</div>
 			</div>
 
-			<!-- Main Title -->
-			<div class="space-y-4">
-				<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">
-					Hey, I'm <br class="md:hidden" />
-					<span
-						class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-emerald-400"
-					>
-						Fajar Maftuh Fadli
-					</span>
-				</h1>
-				<p class="text-xl md:text-2xl font-medium text-slate-400">
-					DevOps Engineer <span class="text-slate-600 px-2">•</span> Cloud
-					Architect <span class="text-slate-600 px-2">•</span> Automation
-				</p>
-			</div>
-
-			<!-- Description -->
-			<p class="max-w-2xl text-lg text-slate-400 leading-relaxed mx-auto">
-				I design, automate, and secure cloud infrastructure that scales
-				— from startups to enterprise systems. Specializing in GCP,
-				Terraform, monitoring, and reliability engineering.
-			</p>
-
-			<!-- CTA Buttons -->
+			<!-- Hero Content -->
 			<div
-				class="flex w-fit flex-col sm:flex-row items-center justify-center gap-4"
+				class="relative z-10 max-w-4xl mx-auto p-6 text-center space-y-8 flex flex-col items-center"
 			>
-				<a
-					href="#contact"
-					class="px-8 py-3 w-full rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-lg shadow-blue-500/25"
-				>
-					Get in touch
-				</a>
-				<a
-					href="#about"
-					class="px-8 py-3 min-w-fit rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-medium transition-all"
-				>
-					View my work
-				</a>
+				<h2>About Me</h2>
 			</div>
 		</div>
 	</div>
