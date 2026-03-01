@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Fajar Maftuh Fadli">
-	<div class="snap-y snap-mandatory max-h-screen overflow-y-scroll">
+	<div class="snap-y snap-proximity max-h-screen overflow-y-scroll">
 		<div
 			class="snap-center relative min-h-screen flex items-center justify-center overflow-hidden"
 		>
@@ -84,7 +84,7 @@ import Layout from "@/layouts/Layout.astro";
 		</div>
 
 		<div
-			class="snap-center relative min-h-screen flex items-center justify-center overflow-hidden"
+			class="snap-start relative min-h-screen flex items-center justify-center overflow-hidden"
 		>
 			<!-- Background effects -->
 			<div class="absolute inset-0 z-0">
@@ -98,11 +98,63 @@ import Layout from "@/layouts/Layout.astro";
 				</div>
 			</div>
 
-			<!-- Hero Content -->
+			<!-- About Content -->
 			<div
-				class="relative z-10 max-w-4xl mx-auto p-6 text-center space-y-8 flex flex-col items-center"
+				class="relative z-10 max-w-6xl mx-auto p-6 flex flex-col items-center w-full"
 			>
-				<h2>About Me</h2>
+				<div class="space-y-4 text-center mb-16">
+					<h2 class="text-4xl md:text-5xl font-bold">
+						<span
+							class="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400"
+						>
+							About Me
+						</span>
+					</h2>
+					<p class="text-lg text-slate-400 max-w-2xl mx-auto">
+						Passionate about building scalable infrastructure and
+						automating everything.
+					</p>
+				</div>
+
+				<div
+					class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl"
+				>
+					<div
+						class="space-y-6 text-left p-8 rounded-2xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-md hover:border-blue-500/50 transition-all duration-300"
+					>
+						<h3 class="text-2xl font-semibold text-slate-200">
+							Who I am
+						</h3>
+						<p class="text-slate-400 leading-relaxed">
+							I am a detail-oriented DevOps Engineer and Cloud
+							Architect with a deep passion for reliability,
+							performance, and automation. By blending development
+							practices with operations, I create seamless
+							pipelines and robust infrastructure that empower
+							teams to ship faster and more securely.
+						</p>
+						<p class="text-slate-400 leading-relaxed">
+							When I'm not configuring clusters or writing
+							infrastructure as code, I'm constantly exploring new
+							tools and methodologies to optimize system
+							architecture.
+						</p>
+					</div>
+
+					<div
+						class="relative w-full aspect-[3/4] md:aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group"
+					>
+						<div
+							class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent z-10"
+						>
+						</div>
+						<img
+							src="/portrait.jpg"
+							alt="Portrait"
+							class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+						/>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
