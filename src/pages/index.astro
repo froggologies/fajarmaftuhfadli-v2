@@ -1,161 +1,137 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Section from "@/components/Section.astro";
 ---
 
 <Layout title="Fajar Maftuh Fadli">
-	<div class="snap-y snap-proximity max-h-screen overflow-y-scroll">
-		<div
-			class="snap-center relative min-h-screen flex items-center justify-center overflow-hidden"
-		>
-			<!-- Background effects -->
-			<div class="absolute inset-0 z-0">
-				<div
-					class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"
-				>
-				</div>
-				<div
-					class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"
-				>
-				</div>
-			</div>
-
-			<!-- Hero Content -->
-			<div
-				class="relative z-10 max-w-4xl mx-auto p-6 text-center space-y-8 flex flex-col items-center"
-			>
-				<!-- Badge -->
-				<div
-					class="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-slate-800/50 border border-slate-700 text-slate-300 backdrop-blur-sm"
-				>
-					<span
-						class="flex h-2 w-2 rounded-full bg-emerald-500 mr-2 animate-pulse"
-					></span>
-					Available for new opportunities
-				</div>
-
-				<!-- Main Title -->
-				<div class="space-y-4">
-					<h1
-						class="text-5xl md:text-7xl font-extrabold tracking-tight"
-					>
-						Hey, I'm <br class="md:hidden" />
-						<span
-							class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-emerald-400"
-						>
-							Fajar Maftuh Fadli
-						</span>
-					</h1>
-					<p class="text-xl md:text-2xl font-medium text-slate-400">
-						DevOps Engineer <span class="text-slate-600 px-2"
-							>•</span
-						> Cloud Architect <span class="text-slate-600 px-2"
-							>•</span
-						> Automation
-					</p>
-				</div>
-
-				<!-- Description -->
-				<p
-					class="max-w-2xl text-lg text-slate-400 leading-relaxed mx-auto"
-				>
-					I design, automate, and secure cloud infrastructure that
-					scales — from startups to enterprise systems. Specializing
-					in GCP, Terraform, monitoring, and reliability engineering.
-				</p>
-
-				<!-- CTA Buttons -->
-				<div
-					class="flex w-fit flex-col sm:flex-row items-center justify-center gap-4"
-				>
-					<a
-						href="#contact"
-						class="px-8 py-3 w-full rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-all shadow-lg shadow-blue-500/25"
-					>
-						Get in touch
-					</a>
-					<a
-						href="#about"
-						class="px-8 py-3 min-w-fit rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-medium transition-all"
-					>
-						View my work
-					</a>
-				</div>
-			</div>
-		</div>
-
-		<div
-			class="snap-start relative min-h-screen flex items-center justify-center overflow-hidden"
-		>
-			<!-- Background effects -->
-			<div class="absolute inset-0 z-0">
-				<div
-					class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"
-				>
-				</div>
-				<div
-					class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"
-				>
-				</div>
-			</div>
-
-			<!-- About Content -->
-			<div
-				class="relative z-10 max-w-6xl mx-auto p-6 flex flex-col items-center w-full"
-			>
-				<div class="space-y-4 text-center mb-16">
-					<h2 class="text-4xl md:text-5xl font-bold">
-						<span
-							class="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-blue-400"
-						>
-							About Me
-						</span>
-					</h2>
-					<p class="text-lg text-slate-400 max-w-2xl mx-auto">
-						Passionate about building scalable infrastructure and
-						automating everything.
-					</p>
-				</div>
-
-				<div
-					class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl"
-				>
-					<div
-						class="space-y-6 text-left p-8 rounded-2xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-md hover:border-blue-500/50 transition-all duration-300"
-					>
-						<h3 class="text-2xl font-semibold text-slate-200">
-							Who I am
-						</h3>
-						<p class="text-slate-400 leading-relaxed">
-							I am a detail-oriented DevOps Engineer and Cloud
-							Architect with a deep passion for reliability,
-							performance, and automation. By blending development
-							practices with operations, I create seamless
-							pipelines and robust infrastructure that empower
-							teams to ship faster and more securely.
-						</p>
-						<p class="text-slate-400 leading-relaxed">
-							When I'm not configuring clusters or writing
-							infrastructure as code, I'm constantly exploring new
-							tools and methodologies to optimize system
-							architecture.
-						</p>
-					</div>
-
-					<div
-						class="relative w-full aspect-3/4 md:aspect-square lg:aspect-4/5 rounded-2xl overflow-hidden shadow-2xl border border-slate-700/50 group"
-					>
-						<div
-							class="absolute inset-0 bg-linear-to-t from-slate-900/80 via-transparent to-transparent z-10"
-						>
-						</div>
-						<img
-							src="/portrait.jpg"
-							alt="Portrait"
-							class="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
-						/>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <Section>
+        <h1>Fajar Maftuh Fadli</h1>
+        <p>DevOps Engineer · Cloud Architect · Infrastructure Automation</p>
+        <p>
+            I design, automate, and secure cloud infrastructure that scales —
+            from startups to enterprise systems. Specializing in GCP, Terraform,
+            monitoring, and reliability engineering.
+        </p>
+        <button>View Projects</button>
+        <button>Download CV</button>
+        <button>Contact Me</button>
+    </Section>
+    <Section>
+        <h2>About Me</h2>
+        <p>
+            I'm a DevOps Engineer focused on building reliable, secure, and
+            scalable cloud systems. My work lives at the interSection of
+            infrastructure automation, observability, and system design. I
+            specialize in Google Cloud Platform, infrastructure-as-code, and
+            enterprise-scale environments — helping organizations move from
+            fragile setups to structured, automated, and resilient
+            architectures.
+        </p>
+        <p>I care about:</p>
+        <ul class="list-disc">
+            <li>Clean system design</li>
+            <li>Least-privilege security</li>
+            <li>Cost efficiency</li>
+            <li>Reliability over hype</li>
+            <li>Automation over manual ops</li>
+            <li>Simplicity over complexity</li>
+        </ul>
+        <q>If it can be automated, it should be automated.</q>
+    </Section>
+    <Section>
+        <h2>Skills & Stack</h2>
+        <h3>Cloud</h3>
+        <p>
+            Google Cloud Platform (GCP) Compute Engine, IAM, BigQuery, Cloud
+            Functions, Cloud Storage, Cloud Monitoring, Cloud Logging
+        </p>
+        <h3>Infrastructure as Code</h3>
+        <ul>
+            <li>Terraform</li>
+            <li>Pulumi</li>
+            <li>Terragrunt</li>
+        </ul>
+        <h3>CI/CD</h3>
+        <ul>
+            <li>GitHub Actions</li>
+            <li>Jenkins</li>
+            <li>Azure DevOps</li>
+        </ul>
+        <h3>DevOps</h3>
+        <ul>
+            <li>Linux</li>
+            <li>Git</li>
+            <li>Docker</li>
+            <li>Kubernetes</li>
+        </ul>
+        <h3>Development</h3>
+        <ul>
+            <li>HTML, CSS, JavaScript, TypeScript</li>
+            <li>React</li>
+            <li>Tailwind CSS</li>
+        </ul>
+    </Section>
+    <Section>
+        <h2>Experience</h2>
+        <h3>DevOps Engineer — PT FISClouds Innovations</h3>
+        <p>Sep 2022 – Present</p>
+        <ul>
+            <li>
+                Designed and developed cloud Proof of Concepts (POC) for
+                enterprise clients
+            </li>
+            <li>Built cost-optimized GCP architectures</li>
+            <li>Automated infrastructure provisioning using Terraform</li>
+            <li>Implemented monitoring, logging, and alerting systems</li>
+            <li>Delivered technical documentation (TSD, FSD)</li>
+            <li>Supported production environments and troubleshooting</li>
+        </ul>
+    </Section>
+    <Section>
+        <h2>Projects / Case Studies</h2>
+        <h3>Bank CIMB — GCP Data Platform Automation</h3>
+        <h4>Problem:</h4>
+        <p>
+            Manual IAM management across hundreds of BigQuery datasets created
+            security risks and operational overhead.
+        </p>
+        <h4>Solution:</h4>
+        <ul>
+            <li>Built Terraform automation for IAM provisioning</li>
+            <li>Implemented least-privilege access model</li>
+            <li>Automated dataset & table permissions</li>
+            <li>Created usage dashboards in Looker Studio</li>
+            <li>Built alerting system for BigQuery usage anomalies</li>
+        </ul>
+        <h4>Impact</h4>
+        <ul>
+            <li>Security hardening</li>
+            <li>Zero manual IAM provisioning</li>
+            <li>Scalable data governance</li>
+            <li>Cost visibility</li>
+        </ul>
+        <h3>Bank Danamon — Enterprise Data Platform</h3>
+        <h4>Scope:</h4>
+        <ul>
+            <li>On-prem → Cloud data integration</li>
+            <li>Multi-database ETL architecture</li>
+        </ul>
+        <h4>Work done:</h4>
+        <ul>
+            <li>
+                Designed ETL pipelines (PostgreSQL, Oracle, MySQL → BigQuery)
+            </li>
+            <li>Automated GCP infrastructure (VMs, Composer, Data Fusion)</li>
+            <li>Centralized logging and monitoring</li>
+            <li>
+                Built notification system using:
+                <ul class="pl-6">
+                    <li>Pub/Sub</li>
+                    <li>Cloud Functions</li>
+                    <li>Secret Manager</li>
+                    <li>Telegram & Microsoft Teams integrations</li>
+                </ul>
+            </li>
+        </ul>
+    </Section>
 </Layout>
