@@ -3,36 +3,36 @@ import "../styles/global.css";
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html
-	lang="en"
-	class="bg-black text-slate-300 leading-loose scrollbar scrollbar-thumb-gray-900/75 scrollbar-track-transparent"
+  lang="en"
+  class="scrollbar scrollbar-thumb-gray-900/75 scrollbar-track-transparent bg-black leading-loose text-slate-300"
 >
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<nav class="h-20 flex items-center justify-between p-7">
-			<div class="font-bold text-2xl"><a href="/">FMF</a></div>
-			<ul class="flex space-x-4 font-semibold">
-				<li class="hover:text-white">
-					<a href="/background">Background</a>
-				</li>
-				<li class="hover:text-white">
-					<a href="/projects">Projects</a>
-				</li>
-				<li class="hover:text-white"><a href="/skills">Skills</a></li>
-			</ul>
-		</nav>
-		<div class="px-7">
-			<div class="mx-auto max-w-2xl py-10">
-				<slot />
-			</div>
-		</div>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <nav class="flex h-20 items-center justify-between p-7">
+      <div class="text-2xl font-bold"><a href="/">FMF</a></div>
+      <ul class="flex space-x-4 font-semibold">
+        <li class="hover:text-white">
+          <a href="/background">Background</a>
+        </li>
+        <li class="hover:text-white">
+          <a href="/projects">Projects</a>
+        </li>
+        <li class="hover:text-white"><a href="/skills">Skills</a></li>
+      </ul>
+    </nav>
+    <div class="px-7">
+      <div class="mx-auto max-w-2xl py-10">
+        <slot />
+      </div>
+    </div>
+  </body>
 </html>
