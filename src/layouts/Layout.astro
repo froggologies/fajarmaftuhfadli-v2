@@ -110,7 +110,7 @@ const { title } = Astro.props;
     // Register the PaintWorklet
     // @ts-ignore
     CSS.paintWorklet.addModule(
-      "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js"
+      "https://unpkg.com/css-houdini-ringparticles/dist/ringparticles.js",
     );
 
     let isInteractive = false;
