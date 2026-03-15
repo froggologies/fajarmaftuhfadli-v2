@@ -5,19 +5,22 @@ import Section from "@/components/Section.astro";
 
 <Layout title="Fajar Maftuh Fadli">
     <Section>
-        <h1>Fajar Maftuh Fadli</h1>
-        <p>DevOps Engineer · Cloud Architect · Infrastructure Automation</p>
+        <h1 class="text-slate-50 text-4xl font-semibold mb-4">
+            Fajar Maftuh Fadli
+        </h1>
+        <p class="pb-6">
+            DevOps Engineer · Cloud Architect · Infrastructure Automation
+        </p>
         <p>
             I design, automate, and secure cloud infrastructure that scales —
             from startups to enterprise systems. Specializing in GCP, Terraform,
             monitoring, and reliability engineering.
         </p>
-        <button>View Projects</button>
-        <button>Download CV</button>
-        <button>Contact Me</button>
-    </Section>
-    <Section>
-        <h2>About Me</h2>
+        <ul class="flex space-x-4 list-none!">
+            <li><a href="/projects">View Projects</a></li>
+            <li><a href="/cv">Download CV</a></li>
+            <li><a href="/contact">Contact Me</a></li>
+        </ul>
         <p>
             I'm a DevOps Engineer focused on building reliable, secure, and
             scalable cloud systems. My work lives at the interSection of
@@ -37,101 +40,5 @@ import Section from "@/components/Section.astro";
             <li>Simplicity over complexity</li>
         </ul>
         <q>If it can be automated, it should be automated.</q>
-    </Section>
-    <Section>
-        <h2>Skills & Stack</h2>
-        <h3>Cloud</h3>
-        <p>
-            Google Cloud Platform (GCP) Compute Engine, IAM, BigQuery, Cloud
-            Functions, Cloud Storage, Cloud Monitoring, Cloud Logging
-        </p>
-        <h3>Infrastructure as Code</h3>
-        <ul>
-            <li>Terraform</li>
-            <li>Pulumi</li>
-            <li>Terragrunt</li>
-        </ul>
-        <h3>CI/CD</h3>
-        <ul>
-            <li>GitHub Actions</li>
-            <li>Jenkins</li>
-            <li>Azure DevOps</li>
-        </ul>
-        <h3>DevOps</h3>
-        <ul>
-            <li>Linux</li>
-            <li>Git</li>
-            <li>Docker</li>
-            <li>Kubernetes</li>
-        </ul>
-        <h3>Development</h3>
-        <ul>
-            <li>HTML, CSS, JavaScript, TypeScript</li>
-            <li>React</li>
-            <li>Tailwind CSS</li>
-        </ul>
-    </Section>
-    <Section>
-        <h2>Experience</h2>
-        <h3>DevOps Engineer — PT FISClouds Innovations</h3>
-        <p>Sep 2022 – Present</p>
-        <ul>
-            <li>
-                Designed and developed cloud Proof of Concepts (POC) for
-                enterprise clients
-            </li>
-            <li>Built cost-optimized GCP architectures</li>
-            <li>Automated infrastructure provisioning using Terraform</li>
-            <li>Implemented monitoring, logging, and alerting systems</li>
-            <li>Delivered technical documentation (TSD, FSD)</li>
-            <li>Supported production environments and troubleshooting</li>
-        </ul>
-    </Section>
-    <Section>
-        <h2>Projects / Case Studies</h2>
-        <h3>Bank CIMB — GCP Data Platform Automation</h3>
-        <h4>Problem:</h4>
-        <p>
-            Manual IAM management across hundreds of BigQuery datasets created
-            security risks and operational overhead.
-        </p>
-        <h4>Solution:</h4>
-        <ul>
-            <li>Built Terraform automation for IAM provisioning</li>
-            <li>Implemented least-privilege access model</li>
-            <li>Automated dataset & table permissions</li>
-            <li>Created usage dashboards in Looker Studio</li>
-            <li>Built alerting system for BigQuery usage anomalies</li>
-        </ul>
-        <h4>Impact</h4>
-        <ul>
-            <li>Security hardening</li>
-            <li>Zero manual IAM provisioning</li>
-            <li>Scalable data governance</li>
-            <li>Cost visibility</li>
-        </ul>
-        <h3>Bank Danamon — Enterprise Data Platform</h3>
-        <h4>Scope:</h4>
-        <ul>
-            <li>On-prem → Cloud data integration</li>
-            <li>Multi-database ETL architecture</li>
-        </ul>
-        <h4>Work done:</h4>
-        <ul>
-            <li>
-                Designed ETL pipelines (PostgreSQL, Oracle, MySQL → BigQuery)
-            </li>
-            <li>Automated GCP infrastructure (VMs, Composer, Data Fusion)</li>
-            <li>Centralized logging and monitoring</li>
-            <li>
-                Built notification system using:
-                <ul class="pl-6">
-                    <li>Pub/Sub</li>
-                    <li>Cloud Functions</li>
-                    <li>Secret Manager</li>
-                    <li>Telegram & Microsoft Teams integrations</li>
-                </ul>
-            </li>
-        </ul>
     </Section>
 </Layout>
