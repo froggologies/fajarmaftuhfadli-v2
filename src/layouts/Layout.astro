@@ -122,30 +122,33 @@ const { title } = Astro.props;
 
     const $body = document.body;
 
-    // Smooth animation loop
+    // Smooth animation loop — runs whether interactive or drifting back to center
     function updateAnimation() {
-      if (!isInteractive) {
-        isAnimating = false;
-        return;
-      }
+      const lerpSpeed = isInteractive ? 0.015 : 0.008; // slower drift back to center
 
-      // Linear interpolation for smoothing (lower number = smoother/slower)
-      currentX += (targetX - currentX) * 0.015;
-      currentY += (targetY - currentY) * 0.015;
+      currentX += (targetX - currentX) * lerpSpeed;
+      currentY += (targetY - currentY) * lerpSpeed;
 
       $body.style.setProperty("--ring-x", currentX.toString());
       $body.style.setProperty("--ring-y", currentY.toString());
 
-      requestAnimationFrame(updateAnimation);
+      const dx = Math.abs(targetX - currentX);
+      const dy = Math.abs(targetY - currentY);
+
+      // Keep running until close enough to target (covers both tracking & drift-back)
+      if (dx > 0.01 || dy > 0.01) {
+        requestAnimationFrame(updateAnimation);
+      } else {
+        isAnimating = false;
+      }
     }
 
     window.addEventListener("pointermove", (e) => {
-      // Use pageX/pageY instead of clientX/clientY so scrolling doesn't affect it
+      // Use pageX/pageY so scrolling doesn't affect position
       const rawX = e.pageX / document.documentElement.scrollWidth;
       const rawY = e.pageY / document.documentElement.scrollHeight;
 
-      // Constrain movement towards the center by damping the raw percentage
-      // Maps a 0-1 coordinate to a restricted range (e.g. 35 to 65)
+      // Constrain movement: maps 0–1 => ~35–65 so ring stays near center
       targetX = 50 + (rawX - 0.5) * 30;
       targetY = 50 + (rawY - 0.5) * 30;
 
@@ -153,11 +156,8 @@ const { title } = Astro.props;
         $body.classList.add("interactive");
         isInteractive = true;
         $body.style.setProperty("--ring-interactive", "1");
-        
-        // Don't snap instantly to target; start from center and float towards it
-        currentX = 50;
-        currentY = 50;
-        
+
+        // Don't snap to cursor — float gently towards it from current position
         if (!isAnimating) {
           isAnimating = true;
           requestAnimationFrame(updateAnimation);
@@ -165,16 +165,20 @@ const { title } = Astro.props;
       }
     });
 
-    // Handle user leaving window
-    document.addEventListener("pointerleave", (e) => {
-      // Small delay prevents flickering if cursor leaves window accidentally
-      setTimeout(() => {
-        $body.classList.remove("interactive");
-        isInteractive = false;
-        $body.style.setProperty("--ring-x", "50");
-        $body.style.setProperty("--ring-y", "50");
-        $body.style.setProperty("--ring-interactive", "0");
-      }, 100);
+    // When cursor leaves the window, drift back to center smoothly — no snap
+    document.addEventListener("pointerleave", () => {
+      $body.classList.remove("interactive");
+      isInteractive = false;
+      $body.style.setProperty("--ring-interactive", "0");
+
+      // Reset target to center; the rAF loop will smoothly drift there
+      targetX = 50;
+      targetY = 50;
+
+      if (!isAnimating) {
+        isAnimating = true;
+        requestAnimationFrame(updateAnimation);
+      }
     });
   }
 </script>
