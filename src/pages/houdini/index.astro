@@ -1,0 +1,224 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Houdini Ring Particles</title>
+    <style>
+      /* Registering Custom Properties for Houdini */
+      @property --ring-radius {
+        syntax: "<number> | random";
+        inherits: false;
+        initial-value: random;
+      }
+      @property --ring-thickness {
+        syntax: "<number> | random";
+        inherits: false;
+        initial-value: random;
+      }
+      @property --ring-x {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 50;
+      }
+      @property --ring-y {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 50;
+      }
+      @property --particle-count {
+        syntax: "<number> | random";
+        inherits: false;
+        initial-value: random;
+      }
+      @property --particle-rows {
+        syntax: "<number> | random";
+        inherits: false;
+        initial-value: random;
+      }
+      @property --particle-size {
+        syntax: "<number> | random";
+        inherits: false;
+        initial-value: random;
+      }
+      @property --particle-color {
+        syntax: "<color> | random";
+        inherits: false;
+        initial-value: random;
+      }
+      @property --particle-min-alpha {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --particle-max-alpha {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 1;
+      }
+      @property --fade-easing {
+        syntax: "<string>";
+        inherits: false;
+        initial-value: "ease-in";
+      }
+      @property --seed {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 0;
+      }
+      @property --animation-tick {
+        syntax: "<number>";
+        inherits: false;
+        initial-value: 0;
+      }
+
+      :root {
+        --bg-color: #020617;
+        --accent-color: #38bdf8;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background-color: var(--bg-color);
+        color: #f8fafc;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+
+        /* Ring Particles Configuration */
+        --ring-radius: 120;
+        --ring-thickness: 180;
+        --particle-count: 120;
+        --particle-rows: 40;
+        --particle-size: 1.5;
+        --particle-color: var(--accent-color);
+        --particle-min-alpha: 0.05;
+        --particle-max-alpha: 0.8;
+        --fade-easing: "ease-out";
+        --ring-x: 50;
+        --ring-y: 50;
+        --seed: 123;
+
+        background-image: paint(ring-particles);
+        animation: tick 20s linear infinite;
+      }
+
+      @keyframes tick {
+        from {
+          --animation-tick: 0;
+        }
+        to {
+          --animation-tick: 1;
+        }
+      }
+
+      .content {
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: 3rem;
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 500px;
+        text-align: center;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+
+      .content:hover {
+        transform: translateY(-5px);
+        border-color: rgba(56, 189, 248, 0.3);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, #38bdf8, #818cf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.025em;
+      }
+
+      p {
+        font-size: 1.125rem;
+        line-height: 1.75;
+        color: #94a3b8;
+        margin-bottom: 0;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: rgba(56, 189, 248, 0.1);
+        color: #38bdf8;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(56, 189, 248, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- The Houdini Canvas -->
+    <div class="particles-container"></div>
+
+    <script>
+      /**
+       * Initialize the Houdini Paint Worklet
+       */
+      async function initHoudini() {
+        // Import the worklet URL using Vite's ?url suffix
+        const workletUrl = (
+          await import("css-houdini-ringparticles/dist/ringparticles.js?url")
+        ).default;
+
+        if (!("paintWorklet" in CSS)) {
+          console.log(
+            "💡 Browser does not support Paint Worklet. Loading local polyfill...",
+          );
+          try {
+            await import("css-paint-polyfill");
+            console.log("Houdini Polyfill loaded");
+          } catch (err) {
+            console.error("Failed to load Houdini Polyfill:", err);
+          }
+        }
+
+        if ("paintWorklet" in CSS) {
+          try {
+            await CSS.paintWorklet.addModule(workletUrl);
+            console.log("Houdini Ring Particles Worklet loaded");
+          } catch (err) {
+            console.error("Failed to load Houdini Worklet:", err);
+          }
+        }
+      }
+
+      initHoudini();
+    </script>
+  </body>
+</html>

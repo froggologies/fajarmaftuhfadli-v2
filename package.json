@@ -17,6 +17,8 @@
     "@types/react-dom": "^19.2.3",
     "astro": "^5.17.1",
     "canvas-confetti": "^1.9.4",
+    "css-houdini-ringparticles": "^1.1.0",
+    "css-paint-polyfill": "^3.4.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.1.18"
