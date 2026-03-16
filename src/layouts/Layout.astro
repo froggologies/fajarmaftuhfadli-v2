@@ -6,7 +6,7 @@ const { title } = Astro.props;
 <!doctype html>
 <html
   lang="en"
-  class="scrollbar bg-black leading-loose text-slate-300 scrollbar-thumb-gray-900/75 scrollbar-track-transparent"
+  class="scrollbar bg-black leading-loose text-slate-400 scrollbar-thumb-gray-900/75 scrollbar-track-transparent selection:rounded-sm selection:bg-slate-800 selection:text-slate-100 [&_a]:text-slate-50 [&_a]:transition-colors [&_a]:duration-300 [&_a]:hover:text-blue-400"
 >
   <head>
     <meta charset="utf-8" />
@@ -18,15 +18,19 @@ const { title } = Astro.props;
   </head>
   <body class="min-h-screen">
     <nav class="flex h-20 items-center justify-between p-7">
-      <div class="text-2xl font-bold"><a href="/">FMF</a></div>
+      <div class="text-2xl font-bold">
+        <a href="/"
+          ><span class="inline-block -scale-x-100 transform">F</span>MF</a
+        >
+      </div>
       <ul class="flex space-x-4 font-semibold">
-        <li class="hover:text-white">
+        <li>
           <a href="/background">Background</a>
         </li>
-        <li class="hover:text-white">
+        <li>
           <a href="/projects">Projects</a>
         </li>
-        <li class="hover:text-white"><a href="/skills">Skills</a></li>
+        <li><a href="/skills">Skills</a></li>
       </ul>
     </nav>
     <div class="px-7">
@@ -88,7 +92,7 @@ const { title } = Astro.props;
       --particle-count: 80;
       --particle-rows: 25;
       --particle-size: 2;
-      --particle-color: #e2e8f0; /* Subtle White/Gray */
+      --particle-color: #51a2ff; /* blue 400 */
 
       --particle-min-alpha: 0.05;
       --particle-max-alpha: 0.4;
