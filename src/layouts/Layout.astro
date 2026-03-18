@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 
+import NavBar from "@/components/NavBar.astro";
 import CSSHoudiniRingParticles from "@/components/CSSHoudiniRingParticles.astro";
 
 const { title } = Astro.props;
@@ -20,27 +21,12 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="min-h-screen">
-    <nav class="flex h-20 items-center justify-between p-7">
-      <div class="text-2xl font-bold">
-        <a href="/"
-          ><span class="inline-block -scale-x-100 transform">F</span>MF</a
-        >
-      </div>
-      <ul class="flex space-x-4 font-semibold">
-        <li>
-          <a href="/background">Background</a>
-        </li>
-        <li>
-          <a href="/projects">Projects</a>
-        </li>
-        <li><a href="/skills">Skills</a></li>
-      </ul>
-    </nav>
-    <div class="px-7">
+    <NavBar />
+    <main class="px-7">
       <div class="mx-auto max-w-2xl py-10">
         <slot />
       </div>
-    </div>
+    </main>
   </body>
 </html>
 
