@@ -1,0 +1,216 @@
+<style is:global>
+  /* Registering Custom Properties for Houdini */
+  @property --ring-radius {
+    syntax: "<number> | random";
+    inherits: false;
+    initial-value: random;
+  }
+  @property --ring-thickness {
+    syntax: "<number> | random";
+    inherits: false;
+    initial-value: random;
+  }
+  @property --ring-x {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 50;
+  }
+  @property --ring-y {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 50;
+  }
+  @property --ring-interactive {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+  @property --particle-count {
+    syntax: "<number> | random";
+    inherits: false;
+    initial-value: random;
+  }
+  @property --particle-rows {
+    syntax: "<number> | random";
+    inherits: false;
+    initial-value: random;
+  }
+  @property --particle-size {
+    syntax: "<number> | random";
+    inherits: false;
+    initial-value: random;
+  }
+  @property --particle-color {
+    syntax: "<color> | random";
+    inherits: false;
+    initial-value: random;
+  }
+  @property --particle-min-alpha {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+  @property --particle-max-alpha {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 1;
+  }
+  @property --fade-easing {
+    syntax: "<string>";
+    inherits: false;
+    initial-value: "ease-in";
+  }
+  @property --seed {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+  @property --animation-tick {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 0;
+  }
+
+  @keyframes ripple {
+    0% {
+      --animation-tick: 0;
+    }
+    100% {
+      --animation-tick: 1;
+    }
+  }
+  @keyframes ring {
+    0% {
+      --ring-radius: 150;
+    }
+    100% {
+      --ring-radius: 250;
+    }
+  }
+
+  body {
+    --ring-radius: 100;
+    --ring-thickness: 600;
+    --particle-count: 80;
+    --particle-rows: 25;
+    --particle-size: 2;
+    --particle-color: #51a2ff; /* blue 400 */
+
+    --particle-min-alpha: 0.05;
+    --particle-max-alpha: 0.4;
+
+    --seed: 200;
+
+    background-image: paint(ring-particles);
+
+    animation:
+      ripple 6s linear infinite,
+      ring 6s ease-in-out infinite alternate;
+  }
+</style>
+
+<script>
+  /**
+   * Initialize the Houdini Paint Worklet
+   */
+  async function initHoudini() {
+    // Import the worklet URL using Vite's ?url suffix
+    const workletUrl = // @ts-ignore
+      (await import("css-houdini-ringparticles/dist/ringparticles.js?url"))
+        .default;
+
+    if (!("paintWorklet" in CSS)) {
+      try {
+        // @ts-ignore
+        await import("css-paint-polyfill");
+      } catch (err) {
+        console.error("Failed to load Houdini Polyfill:", err);
+      }
+    }
+
+    // @ts-ignore
+    if ("paintWorklet" in CSS) {
+      try {
+        // @ts-ignore
+        await CSS.paintWorklet.addModule(workletUrl);
+      } catch (err) {
+        console.error("Failed to load Houdini Worklet:", err);
+      }
+    }
+
+    // Initialize interaction logic
+    setupInteractions();
+  }
+
+  function setupInteractions() {
+    let isInteractive = false;
+    let targetX = 50;
+    let targetY = 50;
+    let currentX = 50;
+    let currentY = 50;
+    let isAnimating = false;
+
+    const $body = document.body;
+
+    // Smooth animation loop — runs whether interactive or drifting back to center
+    function updateAnimation() {
+      const lerpSpeed = isInteractive ? 0.015 : 0.008; // slower drift back to center
+
+      currentX += (targetX - currentX) * lerpSpeed;
+      currentY += (targetY - currentY) * lerpSpeed;
+
+      $body.style.setProperty("--ring-x", currentX.toString());
+      $body.style.setProperty("--ring-y", currentY.toString());
+
+      const dx = Math.abs(targetX - currentX);
+      const dy = Math.abs(targetY - currentY);
+
+      // Keep running until close enough to target (covers both tracking & drift-back)
+      if (dx > 0.01 || dy > 0.01) {
+        requestAnimationFrame(updateAnimation);
+      } else {
+        isAnimating = false;
+      }
+    }
+
+    window.addEventListener("pointermove", (e) => {
+      // Use pageX/pageY so scrolling doesn't affect position
+      const rawX = e.pageX / document.documentElement.scrollWidth;
+      const rawY = e.pageY / document.documentElement.scrollHeight;
+
+      // Constrain movement: maps 0–1 => ~35–65 so ring stays near center
+      targetX = 50 + (rawX - 0.5) * 30;
+      targetY = 50 + (rawY - 0.5) * 30;
+
+      if (!isInteractive) {
+        $body.classList.add("interactive");
+        isInteractive = true;
+        $body.style.setProperty("--ring-interactive", "1");
+
+        // Don't snap to cursor — float gently towards it from current position
+        if (!isAnimating) {
+          isAnimating = true;
+          requestAnimationFrame(updateAnimation);
+        }
+      }
+    });
+
+    // When cursor leaves the window, drift back to center smoothly — no snap
+    document.addEventListener("pointerleave", () => {
+      $body.classList.remove("interactive");
+      isInteractive = false;
+      $body.style.setProperty("--ring-interactive", "0");
+
+      // Reset target to center; the rAF loop will smoothly drift there
+      targetX = 50;
+      targetY = 50;
+
+      if (!isAnimating) {
+        isAnimating = true;
+        requestAnimationFrame(updateAnimation);
+      }
+    });
+  }
+
+  initHoudini();
+</script>
