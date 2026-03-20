@@ -6,89 +6,101 @@ import Section from "@/components/Section.astro";
 <Layout title="Fajar Maftuh Fadli">
   <Section>
     <h1 class="mb-8 text-4xl font-black text-slate-50">Fajar Maftuh Fadli</h1>
-    <p>Hey! I'm Fajar Maftuh Fadli 👋</p>
-    <p>a DevOps engineer who cares about clean, reliable infrastructure.</p>
+    <p class="mb-3">
+      Hey! I'm Fajar Maftuh Fadli 👋 <br /> a DevOps engineer who cares about clean,
+      reliable infrastructure.
+    </p>
+    <ul class="mb-8 flex items-center gap-4">
+      <li><a href="/projects">View Projects</a></li>
+      <li><a href="/cv">View CV</a></li>
+      <li><a href="/#contact">Contact Me</a></li>
+    </ul>
     <p>
       I'm currently working at <a
         href="https://www.fisclouds.com"
         target="_blank"
         rel="noopener noreferrer">FISClouds</a
-      >, where I help design and manage cloud systems—mostly on Google Cloud
-      Platform. I spend a lot of time automating infrastructure with Terraform,
-      setting up monitoring and alerting, and making sure everything runs
-      smoothly and consistently.
+      >, where I design and manage cloud systems—mostly on Google Cloud
+      Platform. I work a lot with Terraform to automate infrastructure, handle
+      IAM at scale, and setting up monitoring and alerting so things stay
+      reliable and predictable in production.
     </p>
     <p>
-      Most of what I do revolves around real production
-      environments—provisioning GCP resources, handling IAM at scale, setup
-      monitoring, alerting systems, and cost optimization. I like keeping things
-      clean, observable, and easy to manage.
+      Most of my experience comes from real production environments, so I care a
+      lot about reliability, cost efficiency, and making systems easy to observe
+      and maintain.
     </p>
     <p>
       Outside of that, I've been getting into frontend and web development,
       mainly in the JavaScript ecosystem. It's fun designing things—lining
-      everything up just right, making them interactive, and building something
-      that actually looks good, not just infrastructure hidden somewhere in the
+      everything up, making them interactive, and building something that
+      actually looks good, not just infrastructure hidden somewhere in the
       cloud.
     </p>
-    <p>
+    <p class="mb-16">
       When I'm not working, I'm usually gaming, watching movies or series, or
-      ricing my setup.
+      ricing my <a href="https://github.com/froggologies/dotfiles">setup</a>.
     </p>
-    <p>You can find me here:</p>
-    <ul class="flex gap-4">
-      <li>
-        <a
-          href="https://github.com/froggologies"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div id="contact" class="mb-16">
+      <p>You can find me here:</p>
+      <ul class="flex gap-4">
+        <li>
+          <a
+            href="https://github.com/froggologies"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2"
+          >
+            <img
+              src="/icons/github.svg"
+              alt="GitHub icon"
+              class="h-5 w-5 invert"
+            />
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/in/fajarmaftuhfadli"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2"
+          >
+            <img
+              src="/icons/linkedin.svg"
+              alt="LinkedIn icon"
+              class="h-5 w-5 invert"
+            />
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://steamcommunity.com/id/froggologies"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2"
+          >
+            <img
+              src="/icons/steam.svg"
+              alt="Steam icon"
+              class="h-5 w-5 invert"
+            />
+            Steam
+          </a>
+        </li>
+      </ul>
+      <p class="flex items-center gap-2">
+        Or mail me at <a
+          href="mailto:fajarmaftuhfadli@gmail.com"
           class="flex items-center gap-2"
-        >
-          <img
-            src="/icons/github.svg"
-            alt="GitHub icon"
+          ><img
+            src="/icons/gmail.svg"
+            alt="Gmail icon"
             class="h-5 w-5 invert"
-          />
-          GitHub
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.linkedin.com/in/fajarmaftuhfadli"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2"
+          />fajarmaftuhfadli@gmail.com</a
         >
-          <img
-            src="/icons/linkedin.svg"
-            alt="LinkedIn icon"
-            class="h-5 w-5 invert"
-          />
-          LinkedIn
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://steamcommunity.com/id/froggologies"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2"
-        >
-          <img src="/icons/steam.svg" alt="Steam icon" class="h-5 w-5 invert" />
-          Steam
-        </a>
-      </li>
-    </ul>
-    <p class="flex items-center gap-2">
-      Or mail me at <a
-        href="mailto:fajarmaftuhfadli@gmail.com"
-        class="flex items-center gap-2"
-        ><img
-          src="/icons/gmail.svg"
-          alt="Gmail icon"
-          class="h-5 w-5 invert"
-        />fajarmaftuhfadli@gmail.com</a
-      >
-    </p>
+      </p>
+    </div>
   </Section>
 </Layout>
