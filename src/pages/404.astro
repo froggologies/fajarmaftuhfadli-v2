@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="404">
+  <div>
+    <p>404</p>
+    <p>
+      The page <code id="path-display"></code> does not exist.
+    </p>
+    <script>
+      const pathDisplay = document.getElementById("path-display");
+      if (pathDisplay) {
+        pathDisplay.textContent = window.location.pathname;
+      }
+    </script>
+    <div>
+      <a href="/"> Return to Homepage </a>
+    </div>
+  </div>
+</Layout>
