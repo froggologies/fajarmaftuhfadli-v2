@@ -6,15 +6,22 @@ import Section from "@/components/Section.astro";
 <Layout title="Fajar Maftuh Fadli">
   <Section>
     <h1 class="mb-8 text-4xl font-black text-slate-50">Fajar Maftuh Fadli</h1>
-    <p class="mb-3">
-      Hey! I'm Fajar Maftuh Fadli 👋 <br /> a DevOps engineer who cares about clean,
-      reliable infrastructure.
-    </p>
-    <ul class="mb-8 flex items-center gap-4">
-      <li><a href="/projects">View Projects</a></li>
-      <li><a href="/cv">View CV</a></li>
-      <li><a href="/#contact">Contact Me</a></li>
-    </ul>
+    <div class="mb-8">
+      <p>
+        <span class="flex items-center gap-2">
+          Hey! I'm Fajar Maftuh Fadli <img
+            src="/icons/waving-hand.svg"
+            alt="Waving Hand icon"
+            class="h-5 w-5 animate-bounce cursor-grab invert"
+          /></span
+        > a DevOps engineer who cares about clean, reliable infrastructure.
+      </p>
+      <ul class="flex items-center gap-4">
+        <li><a href="/projects">View Projects</a></li>
+        <li><a href="/cv">View CV</a></li>
+        <li><a href="/#contact">Contact Me</a></li>
+      </ul>
+    </div>
     <p>
       I'm currently working at <a
         href="https://www.fisclouds.com"
@@ -84,7 +91,7 @@ import Section from "@/components/Section.astro";
             <img
               src="/icons/steam.svg"
               alt="Steam icon"
-              class="h-5 w-5 invert"
+              class="h-3 w-5 invert"
             />
             Steam
           </a>
