@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="404">
-  <div>
+  <div class="mx-auto max-w-2xl">
     <p>404</p>
     <p>
       The page <code id="path-display"></code> does not exist.
@@ -14,8 +14,6 @@ import Layout from "@/layouts/Layout.astro";
         pathDisplay.textContent = window.location.pathname;
       }
     </script>
-    <div>
-      <a href="/"> Return to Homepage </a>
-    </div>
+    <a href="/"> cd ..</a>
   </div>
 </Layout>
