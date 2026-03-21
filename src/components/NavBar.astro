@@ -1,6 +1,10 @@
 <nav class="flex h-20 items-center justify-between p-7">
-  <div class="text-2xl font-black">
-    <a href="/"><span class="inline-block -scale-x-100 transform">F</span>MF</a>
+  <div class="text-2xl font-black logo-container">
+    <a href="/" class="inline-flex items-center transition-transform hover:scale-110 active:scale-95 duration-300">
+      <span class="f-mirrored inline-block">F</span>
+      <span class="m-letter inline-block">M</span>
+      <span class="f-letter inline-block">F</span>
+    </a>
   </div>
   <ul class="flex space-x-4 font-semibold [&_a]:text-slate-400">
     <li>
@@ -12,3 +16,39 @@
     <li><a href="/skills">Skills</a></li>
   </ul>
 </nav>
+
+<style>
+  .logo-container a {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .f-mirrored {
+    transform: scaleX(-1);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .m-letter, .f-letter {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .logo-container a:hover .f-mirrored {
+    transform: scaleX(-1) translateY(-4px) rotate(-10deg);
+  }
+  
+  .logo-container a:hover .m-letter {
+    transform: translateY(-6px);
+  }
+  
+  .logo-container a:hover .f-letter {
+    transform: translateY(-4px) rotate(10deg);
+  }
+</style>
