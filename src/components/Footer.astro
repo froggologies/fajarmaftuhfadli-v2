@@ -2,9 +2,7 @@
 import IconHeart from "@/components/icons/heart.astro";
 ---
 
-<footer
-  class="mx-auto mt-16 w-full max-w-2xl text-slate-600 [&_a]:text-slate-600!"
->
+<footer class="mx-auto mt-16 w-full max-w-2xl text-slate-600">
   <p>
     <span>
       © {new Date().getFullYear()} Fajar Maftuh Fadli
@@ -20,8 +18,9 @@ import IconHeart from "@/components/icons/heart.astro";
     <span> · </span>
     <span class="inline-flex flex-nowrap items-center gap-2">
       Built with <a
+        aria-label="Love"
         href="/credits"
-        class="hover:animate-pulse hover:text-red-400! active:animate-pulse active:text-red-400!"
+        class="hover:animate-pulse hover:text-red-400 active:animate-pulse active:text-red-400"
         ><IconHeart /></a
       >
     </span>

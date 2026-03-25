@@ -6,32 +6,36 @@ import IconBrandGithub from "@/components/icons/brand-github.astro";
 import IconBrandLinkedin from "@/components/icons/brand-linkedin.astro";
 import IconBrandSteam from "@/components/icons/brand-steam.astro";
 import IconMail from "@/components/icons/mail.astro";
+import H1 from "@/components/H1.astro";
+import Link from "@/components/Link.astro";
+import Button from "@/components/Button.astro";
 ---
 
 <Layout title="Fajar Maftuh Fadli">
   <Section>
-    <h1 class="mb-8 text-4xl font-black text-slate-50">Fajar Maftuh Fadli</h1>
+    <H1>Fajar Maftuh Fadli</H1>
     <div>
       <p>
         <span class="flex items-center gap-2">
           Hey! I'm Fajar Maftuh Fadli <span
-            class="origin-[70%_70%] animate-wave cursor-grab [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-slate-50 [&>svg]:hover:fill-blue-400 [&>svg]:active:fill-blue-400"
+            class="origin-[70%_70%] animate-wave cursor-grab [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-slate-100 [&>svg]:hover:fill-blue-400 [&>svg]:active:fill-blue-400"
             ><IconWavingHand /></span
           >
         </span>
         a DevOps engineer who cares about clean, reliable infrastructure.
       </p>
-      <ul class="flex items-center gap-4">
-        <li><a href="/projects">View Projects</a></li>
-        <li><a href="/cv">View CV</a></li>
-        <li><a href="/#contact">Contact Me</a></li>
+      <ul class="flex items-center gap-2">
+        <li><Button><a href="/cv">View CV</a></Button></li>
+        <li><Button><a href="/#contact">Contact Me</a></Button></li>
       </ul>
     </div>
     <p>
-      I'm currently working at <a
-        href="https://www.fisclouds.com"
-        target="_blank"
-        rel="noopener noreferrer">FISClouds</a
+      I'm currently working at <Link
+        ><a
+          href="https://www.fisclouds.com"
+          target="_blank"
+          rel="noopener noreferrer">FISClouds</a
+        ></Link
       >, where I design and manage cloud systems—mostly on Google Cloud
       Platform. I work a lot with Terraform to automate infrastructure, handle
       IAM at scale, and setting up monitoring and alerting so things stay
@@ -51,50 +55,60 @@ import IconMail from "@/components/icons/mail.astro";
     </p>
     <p>
       When I'm not working, I'm usually gaming, watching movies or series, or
-      ricing my <a href="https://github.com/froggologies/dotfiles">setup</a>.
+      ricing my <Link
+        ><a href="https://github.com/froggologies/dotfiles">setup</a></Link
+      >.
     </p>
     <div id="contact" class="mt-16">
       <p>You can find me here:</p>
       <ul class="flex gap-4">
         <li>
-          <a
-            href="https://github.com/froggologies"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-2"
-          >
-            <IconBrandGithub />
-            GitHub
-          </a>
+          <Link>
+            <a
+              href="https://github.com/froggologies"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2"
+            >
+              <IconBrandGithub />
+              GitHub
+            </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="https://www.linkedin.com/in/fajarmaftuhfadli"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-2"
-          >
-            <IconBrandLinkedin />
-            LinkedIn
-          </a>
+          <Link>
+            <a
+              href="https://www.linkedin.com/in/fajarmaftuhfadli"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2"
+            >
+              <IconBrandLinkedin />
+              LinkedIn
+            </a>
+          </Link>
         </li>
         <li>
-          <a
-            href="https://steamcommunity.com/id/froggologies"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex items-center gap-2"
-          >
-            <IconBrandSteam />
-            Steam
-          </a>
+          <Link>
+            <a
+              href="https://steamcommunity.com/id/froggologies"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2"
+            >
+              <IconBrandSteam />
+              Steam
+            </a>
+          </Link>
         </li>
       </ul>
       <p class="flex items-center gap-2">
-        Or mail me at <a
-          href="mailto:fajarmaftuhfadli@gmail.com"
-          class="flex items-center gap-2"
-          ><IconMail />fajarmaftuhfadli@gmail.com</a
+        Or mail me at <Link
+          ><a
+            href="mailto:fajarmaftuhfadli@gmail.com"
+            class="flex items-center gap-2"
+            ><IconMail />fajarmaftuhfadli@gmail.com</a
+          ></Link
         >
       </p>
     </div>
