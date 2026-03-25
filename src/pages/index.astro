@@ -1,6 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
+import IconBrandGithub from "@/components/icons/brand-github.astro";
+import IconBrandLinkedin from "@/components/icons/brand-linkedin.astro";
+import IconBrandSteam from "@/components/icons/brand-steam.astro";
+import IconMail from "@/components/icons/mail.astro";
 ---
 
 <Layout title="Fajar Maftuh Fadli">
@@ -14,7 +18,8 @@ import Section from "@/components/Section.astro";
             alt="Waving Hand icon"
             class="h-5 w-5 origin-[70%_70%] animate-wave cursor-grab invert"
           /></span
-        > a DevOps engineer who cares about clean, reliable infrastructure.
+        >
+        a DevOps engineer who cares about clean, reliable infrastructure.
       </p>
       <ul class="flex items-center gap-4">
         <li><a href="/projects">View Projects</a></li>
@@ -58,11 +63,7 @@ import Section from "@/components/Section.astro";
             rel="noopener noreferrer"
             class="flex items-center gap-2"
           >
-            <img
-              src="/icons/github.svg"
-              alt="GitHub icon"
-              class="h-5 w-5 invert"
-            />
+            <IconBrandGithub />
             GitHub
           </a>
         </li>
@@ -73,11 +74,7 @@ import Section from "@/components/Section.astro";
             rel="noopener noreferrer"
             class="flex items-center gap-2"
           >
-            <img
-              src="/icons/linkedin.svg"
-              alt="LinkedIn icon"
-              class="h-5 w-5 invert"
-            />
+            <IconBrandLinkedin />
             LinkedIn
           </a>
         </li>
@@ -88,11 +85,7 @@ import Section from "@/components/Section.astro";
             rel="noopener noreferrer"
             class="flex items-center gap-2"
           >
-            <img
-              src="/icons/steam.svg"
-              alt="Steam icon"
-              class="h-5 w-5 invert"
-            />
+            <IconBrandSteam />
             Steam
           </a>
         </li>
@@ -101,11 +94,7 @@ import Section from "@/components/Section.astro";
         Or mail me at <a
           href="mailto:fajarmaftuhfadli@gmail.com"
           class="flex items-center gap-2"
-          ><img
-            src="/icons/gmail.svg"
-            alt="Gmail icon"
-            class="h-5 w-5 invert"
-          />fajarmaftuhfadli@gmail.com</a
+          ><IconMail />fajarmaftuhfadli@gmail.com</a
         >
       </p>
     </div>
