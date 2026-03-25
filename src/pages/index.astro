@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Section from "@/components/Section.astro";
+import IconWavingHand from "@/components/icons/waving-hand.astro";
 import IconBrandGithub from "@/components/icons/brand-github.astro";
 import IconBrandLinkedin from "@/components/icons/brand-linkedin.astro";
 import IconBrandSteam from "@/components/icons/brand-steam.astro";
@@ -13,12 +14,11 @@ import IconMail from "@/components/icons/mail.astro";
     <div>
       <p>
         <span class="flex items-center gap-2">
-          Hey! I'm Fajar Maftuh Fadli <img
-            src="/icons/waving-hand.svg"
-            alt="Waving Hand icon"
-            class="h-5 w-5 origin-[70%_70%] animate-wave cursor-grab invert"
-          /></span
-        >
+          Hey! I'm Fajar Maftuh Fadli <span
+            class="origin-[70%_70%] animate-wave cursor-grab invert"
+            ><IconWavingHand /></span
+          >
+        </span>
         a DevOps engineer who cares about clean, reliable infrastructure.
       </p>
       <ul class="flex items-center gap-4">
