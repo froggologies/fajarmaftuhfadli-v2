@@ -3,17 +3,107 @@ import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="404">
-  <div class="mx-auto max-w-2xl">
-    <p>404</p>
+  <div class="mx-auto max-w-2xl font-mono">
+    <h1
+      class="text-stroke-outside -space-x-24 text-9xl font-black text-red-400"
+    >
+      <span class="">4</span>
+      <span class="">0</span>
+      <span class="">4</span>
+    </h1>
+    <p><span class="text-red-400">Error:</span> Page not found</p>
     <p>
-      The page <code id="path-display"></code> does not exist.
+      No such file or directory: <span id="path-display-2"></span>/index.html
     </p>
-    <script>
-      const pathDisplay = document.getElementById("path-display");
-      if (pathDisplay) {
-        pathDisplay.textContent = window.location.pathname;
-      }
-    </script>
-    <a href="/"> cd ..</a>
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- <span class="text-green-400">guest@fajarmaftuhfadli</span> -->
+      <!-- <span class="text-gray-500">:</span> -->
+      <span class="text-blue-400">&gt;</span>
+      <!-- <span class="text-gray-500">$</span> -->
+      <a
+        href="/"
+        class="group relative text-slate-100 transition-colors hover:text-blue-400"
+        >cd /home
+        <span
+          class="animate-blink absolute top-[0.1em] -right-[1.2ch] bottom-[0.1em] w-[1ch] bg-gray-400 group-hover:bg-blue-400"
+        ></span>
+      </a>
+    </div>
   </div>
 </Layout>
+
+<script>
+  const updatePaths = () => {
+    const pathString = window.location.pathname;
+
+    const pathDisplay = document.getElementById("path-display");
+    if (pathDisplay) {
+      pathDisplay.textContent = pathString;
+    }
+
+    const pathDisplay2 = document.getElementById("path-display-2");
+    if (pathDisplay2) {
+      pathDisplay2.textContent = pathString;
+    }
+  };
+
+  // Run on initial load and navigation
+  updatePaths();
+  document.addEventListener("astro:page-load", updatePaths);
+</script>
+
+<style>
+  .text-stroke {
+    -webkit-text-stroke-color: #fff;
+    -webkit-text-stroke-width: 2px;
+  }
+
+  .text-stroke-outside {
+    text-shadow:
+      1px 0 0 black,
+      -1px 0 0 black,
+      0 1px 0 black,
+      0 -1px 0 black,
+      2px 0 0 black,
+      -2px 0 0 black,
+      0 2px 0 black,
+      0 -2px 0 black,
+      3px 0 0 black,
+      -3px 0 0 black,
+      0 3px 0 black,
+      0 -3px 0 black,
+      4px 0 0 black,
+      -4px 0 0 black,
+      0 4px 0 black,
+      0 -4px 0 black,
+      1px 1px 0 black,
+      -1px 1px 0 black,
+      1px -1px 0 black,
+      -1px -1px 0 black,
+      2px 2px 0 black,
+      -2px 2px 0 black,
+      2px -2px 0 black,
+      -2px -2px 0 black,
+      3px 3px 0 black,
+      -3px 3px 0 black,
+      3px -3px 0 black,
+      -3px -3px 0 black,
+      4px 4px 0 black,
+      -4px 4px 0 black,
+      4px -4px 0 black,
+      -4px -4px 0 black;
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
