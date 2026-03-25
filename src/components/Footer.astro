@@ -2,7 +2,9 @@
 import IconHeart from "@/components/icons/heart.astro";
 ---
 
-<footer class="mx-auto mt-16 max-w-2xl text-slate-600 [&_a]:text-slate-600!">
+<footer
+  class="mx-auto mt-16 w-full max-w-2xl text-slate-600 [&_a]:text-slate-600!"
+>
   <p>
     <span>
       © {new Date().getFullYear()} Fajar Maftuh Fadli
@@ -12,20 +14,15 @@ import IconHeart from "@/components/icons/heart.astro";
       href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
       target="_blank"
       rel="noopener noreferrer"
-      class="relative before:absolute before:-bottom-0.5 before:left-0 before:h-px before:w-full before:bg-slate-600 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100"
+      class="underline decoration-slate-600/0 hover:decoration-slate-600 active:decoration-slate-600"
       >CC BY-NC-SA 4.0</a
-    >
-    <span> · </span>
-    <a
-      href="https://github.com"
-      class="relative before:absolute before:-bottom-0.5 before:left-0 before:h-px before:w-full before:bg-slate-600 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100"
-      >Source</a
     >
     <span> · </span>
     <span class="inline-flex flex-nowrap items-center gap-2">
       Built with <a
         href="/credits"
-        class="hover:animate-pulse hover:text-red-400!"><IconHeart /></a
+        class="hover:animate-pulse hover:text-red-400! active:text-red-400!"
+        ><IconHeart /></a
       >
     </span>
   </p>
