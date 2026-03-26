@@ -1,5 +1,9 @@
 {
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  "plugins": [
+    "prettier-plugin-astro",
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
   "tailwindStylesheet": "./src/styles/global.css",
   "overrides": [
     {
@@ -8,5 +12,19 @@
         "parser": "astro"
       }
     }
-  ]
+  ],
+  "importOrder": [
+    "^@/styles/(.*)$",
+    "",
+    "^@/layouts/(.*)$",
+    "",
+    "^@/components/icons/(.*)$",
+    "",
+    "^@/components/(.*)$",
+    "",
+    "^[./]"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+  "importOrderTypeScriptVersion": "5.0.0",
+  "importOrderCaseSensitive": false
 }
