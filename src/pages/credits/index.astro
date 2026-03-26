@@ -1,19 +1,20 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
+import Container from "@/components/Container.astro";
 import H1 from "@/components/H1.astro";
 import Link from "@/components/Link.astro";
-import Section from "@/components/Section.astro";
+import Ul from "@/components/Ul.astro";
 ---
 
 <Layout title="Credits - Fajar Maftuh Fadli">
-  <Section>
+  <Container>
     <H1>Credits</H1>
     <p>
       A huge thanks to the open-source community for the tools and inspirations
       that helped build this site.
     </p>
-    <ul class="list-inside list-disc space-y-2 marker:text-slate-600">
+    <Ul>
       <li>
         Design inspired by <Link
           ><a href="https://antfu.me" target="_blank" rel="noopener noreferrer"
@@ -60,6 +61,6 @@ import Section from "@/components/Section.astro";
           ></Link
         >.
       </li>
-    </ul>
-  </Section>
+    </Ul>
+  </Container>
 </Layout>

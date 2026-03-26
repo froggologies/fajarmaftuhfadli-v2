@@ -8,16 +8,16 @@ import IconMail from "@/components/icons/mail.astro";
 import IconWavingHand from "@/components/icons/waving-hand.astro";
 
 import Button from "@/components/Button.astro";
+import Container from "@/components/Container.astro";
 import H1 from "@/components/H1.astro";
 import Link from "@/components/Link.astro";
-import Section from "@/components/Section.astro";
 import Spacer from "@/components/Spacer.astro";
 ---
 
 <Layout title="Fajar Maftuh Fadli">
-  <Section>
+  <Container>
     <H1>Fajar Maftuh Fadli</H1>
-    <div>
+    <div class="mb-8">
       <p>
         <span class="flex items-center gap-2">
           Hey! I'm Fajar<span
@@ -32,36 +32,38 @@ import Spacer from "@/components/Spacer.astro";
         <li><Button><a href="/#contact">Contact Me</a></Button></li>
       </ul>
     </div>
-    <p>
-      I'm currently working at <Link
-        ><a
-          href="https://www.fisclouds.com"
-          target="_blank"
-          rel="noopener noreferrer">FISClouds</a
-        ></Link
-      >, where I design and manage cloud systems—mostly on Google Cloud
-      Platform. I work a lot with Terraform to automate infrastructure, handle
-      IAM at scale, and setting up monitoring and alerting so things stay
-      reliable and predictable in production.
-    </p>
-    <p>
-      Most of my experience comes from real production environments, so I care a
-      lot about reliability, cost efficiency, and making systems easy to observe
-      and maintain.
-    </p>
-    <p>
-      Outside of that, I've been getting into frontend and web development,
-      mainly in the JavaScript ecosystem. It's fun designing things—lining
-      everything up, making them interactive, and building something that
-      actually looks good, not just infrastructure hidden somewhere in the
-      cloud.
-    </p>
-    <p>
-      When I'm not working, I'm usually gaming, watching movies or series, or
-      ricing my <Link
-        ><a href="https://github.com/froggologies/dotfiles">setup</a></Link
-      >.
-    </p>
+    <div class="space-y-5">
+      <p>
+        I'm currently working at <Link
+          ><a
+            href="https://www.fisclouds.com"
+            target="_blank"
+            rel="noopener noreferrer">FISClouds</a
+          ></Link
+        >, where I design and manage cloud systems—mostly on Google Cloud
+        Platform. I work a lot with Terraform to automate infrastructure, handle
+        IAM at scale, and setting up monitoring and alerting so things stay
+        reliable and predictable in production.
+      </p>
+      <p>
+        Most of my experience comes from real production environments, so I care
+        a lot about reliability, cost efficiency, and making systems easy to
+        observe and maintain.
+      </p>
+      <p>
+        Outside of that, I've been getting into frontend and web development,
+        mainly in the JavaScript ecosystem. It's fun designing things—lining
+        everything up, making them interactive, and building something that
+        actually looks good, not just infrastructure hidden somewhere in the
+        cloud.
+      </p>
+      <p>
+        When I'm not working, I'm usually gaming, watching movies or series, or
+        ricing my <Link
+          ><a href="https://github.com/froggologies/dotfiles">setup</a></Link
+        >.
+      </p>
+    </div>
     <Spacer />
     <div id="contact">
       <p>You can find me here:</p>
@@ -116,5 +118,5 @@ import Spacer from "@/components/Spacer.astro";
         >
       </p>
     </div>
-  </Section>
+  </Container>
 </Layout>
