@@ -9,6 +9,7 @@ import IconMail from "@/components/icons/mail.astro";
 import H1 from "@/components/H1.astro";
 import Link from "@/components/Link.astro";
 import Button from "@/components/Button.astro";
+import Spacer from "@/components/Spacer.astro";
 ---
 
 <Layout title="Fajar Maftuh Fadli">
@@ -17,7 +18,7 @@ import Button from "@/components/Button.astro";
     <div>
       <p>
         <span class="flex items-center gap-2">
-          Hey! I'm Fajar Maftuh Fadli <span
+          Hey! I'm Fajar<span
             class="origin-[70%_70%] animate-wave cursor-grab [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-slate-100 [&>svg]:hover:fill-blue-400 [&>svg]:active:fill-blue-400"
             ><IconWavingHand /></span
           >
@@ -59,7 +60,8 @@ import Button from "@/components/Button.astro";
         ><a href="https://github.com/froggologies/dotfiles">setup</a></Link
       >.
     </p>
-    <div id="contact" class="mt-16">
+    <Spacer />
+    <div id="contact">
       <p>You can find me here:</p>
       <ul class="flex gap-4">
         <li>
