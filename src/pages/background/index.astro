@@ -1,0 +1,138 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import BackgroundItem from "@/components/BackgroundItem.astro";
+import Container from "@/components/Container.astro";
+import H1 from "@/components/H1.astro";
+import H1Subtext from "@/components/H1Subtext.astro";
+import H2 from "@/components/H2.astro";
+import Ul from "@/components/Ul.astro";
+---
+
+<Layout title="Background - Fajar Maftuh Fadli">
+  <Container>
+    <H1>Background</H1>
+    <H1Subtext>
+      Here's a summary of my professional background and education.
+    </H1Subtext>
+    <section>
+      <div class="mb-8">
+        <H2>Experience</H2>
+        <div class="flex flex-col gap-3">
+          <BackgroundItem
+            organization="PT FISClouds Innovations"
+            organizationUrl="https://www.fisclouds.com"
+            title="DevOps Engineer"
+            location="South Jakarta"
+            startDate="Sep 2022"
+            endDate="Present"
+          >
+            <p class="text-slate-300">Key Responsibilities</p>
+            <Ul>
+              <li>
+                Designed and developed Proofs of Concept (POC) for clients.
+              </li>
+              <li>Estimated GCP billing and optimized cost efficiency.</li>
+              <li>
+                Provided technical support and troubleshooting for client
+                environments.
+              </li>
+            </Ul>
+            <p class="text-slate-300">Selected Projects:</p>
+            <div>
+              <p class="text-slate-300">BerandaToko (Jatis Mobile)</p>
+              <Ul>
+                <li>
+                  Integrated monitoring and logging on GCP using New Relic.
+                </li>
+              </Ul>
+            </div>
+            <div>
+              <p class="text-slate-300">Bank CIMB</p>
+              <Ul>
+                <li>
+                  Automated IAM provisioning for hundreds of BigQuery datasets
+                  and tables using Terraform, applying least-privilege
+                  principles.
+                </li>
+                <li>
+                  Developed Looker Studio dashboards and alerting for BigQuery
+                  usage.
+                </li>
+                <li>
+                  Authored TSD and FSD documentation for GCP implementations.
+                </li>
+              </Ul>
+            </div>
+            <div>
+              <p class="text-slate-300">Biz2X</p>
+              <Ul>
+                <li>Integrated PagerDuty with GCP alert notifications.</li>
+                <li>
+                  Deployed VM monitoring agents and built alerting dashboards.
+                </li>
+              </Ul>
+            </div>
+            <div>
+              <p class="text-slate-300">Bank Danamon</p>
+              <Ul>
+                <li>
+                  Conducted on-premise database assessment and designed ETL
+                  pipelines connecting PostgreSQL, Oracle, and MySQL to BigQuery
+                  via Data Fusion.
+                </li>
+                <li>
+                  Managed and automated GCP resources (VMs, Cloud Composer, Data
+                  Fusion) with Terraform.
+                </li>
+                <li>
+                  Built centralized logging, metrics, and alerting systems
+                  across the organization.
+                </li>
+                <li>
+                  Developed automated notification workflows using Pub/Sub,
+                  Cloud Functions, Secret Manager, and integrations with
+                  Telegram and Microsoft Teams.
+                </li>
+                <li>
+                  Wrote landing zone TSD and validation test cases for service
+                  reliability.
+                </li>
+              </Ul>
+            </div>
+          </BackgroundItem>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <H2>Education</H2>
+        <div class="flex flex-col gap-3">
+          <BackgroundItem
+            organization="University of Gunadarma"
+            organizationUrl="https://www.gunadarma.ac.id"
+            title="Informatics Engineering"
+            location="Depok"
+            startDate="2018"
+            endDate="2024"
+          >
+            <Ul>
+              <li>
+                Achieved GPA: <span class="text-slate-300">3.63/4.00</span>
+              </li>
+              <li>
+                Relevant Coursework: Software Engineering, Cloud Computing,
+                Network Administration.
+              </li>
+              <li>
+                Scientific Writing: Securing Websites Using Terraform and Cloud
+                Armor on Google Cloud Platform.
+              </li>
+            </Ul>
+          </BackgroundItem>
+        </div>
+      </div>
+    </section>
+  </Container>
+</Layout>

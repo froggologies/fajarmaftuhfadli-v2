@@ -1,0 +1,47 @@
+---
+import IconExternalLink from "@/components/icons/external-link.astro";
+
+import H3 from "@/components/H3.astro";
+import Link from "@/components/Link.astro";
+
+type Props = {
+  organization: string;
+  organizationUrl: string;
+  title: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+};
+
+const { organization, organizationUrl, title, location, startDate, endDate } =
+  Astro.props;
+---
+
+<div>
+  <div class="mb-3 sm:flex sm:flex-wrap sm:justify-between sm:gap-2">
+    <div>
+      <span class="flex items-center gap-2">
+        <H3>{organization}</H3>
+        <Link
+          ><a
+            href={organizationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${organization} website`}
+            class="flex items-center"
+          >
+            <IconExternalLink />
+          </a>
+        </Link>
+      </span>
+      <p>{title}</p>
+    </div>
+    <div class="sm:flex-1 sm:text-right">
+      <p>{location}</p>
+      <p>{startDate} - {endDate}</p>
+    </div>
+  </div>
+  <div>
+    <slot />
+  </div>
+</div>
