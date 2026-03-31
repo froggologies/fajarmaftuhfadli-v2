@@ -8,7 +8,7 @@ import IconExclamationCircle from "@/components/icons/exclamation-circle.astro";
 <Layout title="404">
   <div class="mx-auto max-w-2xl font-mono">
     <h1
-      class="text-stroke-outside -space-x-24 text-9xl font-black text-red-400"
+      class="text-stroke-outside mb-3 -space-x-24 text-9xl font-black text-red-400"
     >
       <span class="">4</span>
       <span class="">0</span>
@@ -18,9 +18,9 @@ import IconExclamationCircle from "@/components/icons/exclamation-circle.astro";
       <span class="text-red-400">
         <IconExclamationCircle />
       </span>
-      Error: Page not found
+      <span id="status-text">Error: Page not found</span>
     </p>
-    <p>
+    <p id="status-detail" class="mb-3">
       <span id="path-display"></span>/index.html : No such file or directory
     </p>
     <div class="flex items-center gap-2">
@@ -40,10 +40,19 @@ import IconExclamationCircle from "@/components/icons/exclamation-circle.astro";
 <script>
   const updatePaths = () => {
     const pathString = window.location.pathname;
+    const is404Route = pathString === "/404" || pathString === "/404/";
 
-    const pathDisplay = document.getElementById("path-display");
-    if (pathDisplay) {
-      pathDisplay.textContent = pathString;
+    const statusText = document.getElementById("status-text");
+    const statusDetail = document.getElementById("status-detail");
+
+    if (is404Route) {
+      if (statusText) statusText.textContent = "Success: 404 page found";
+      if (statusDetail) statusDetail.textContent = "Hi! Are you lost?";
+    } else {
+      const pathDisplay = document.getElementById("path-display");
+      if (pathDisplay) {
+        pathDisplay.textContent = pathString;
+      }
     }
   };
 
