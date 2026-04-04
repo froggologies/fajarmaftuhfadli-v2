@@ -4,7 +4,7 @@ import Link from "@/components/Link.astro";
 
 <nav class="flex h-20 items-center justify-between p-7">
   <div class="logo-container text-2xl font-black">
-    <Link>
+    <Link underline={false}>
       <a
         href="/"
         class="inline-flex items-center transition-transform duration-300 hover:scale-110 active:scale-95"
@@ -17,13 +17,17 @@ import Link from "@/components/Link.astro";
   </div>
   <ul class="flex space-x-4 font-semibold [&_a]:text-slate-400">
     <li>
-      <Link><a href="/background">Background</a></Link>
+      <Link underline={false} color={false}
+        ><a href="/background">Background</a></Link
+      >
     </li>
     <li>
-      <Link><a href="/projects">Projects</a></Link>
+      <Link underline={false} color={false}
+        ><a href="/projects">Projects</a></Link
+      >
     </li>
     <li>
-      <Link><a href="/skills">Skills</a></Link>
+      <Link underline={false} color={false}><a href="/skills">Skills</a></Link>
     </li>
   </ul>
 </nav>

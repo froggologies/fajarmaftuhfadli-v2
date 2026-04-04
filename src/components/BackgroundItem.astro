@@ -21,18 +21,18 @@ const { organization, organizationUrl, title, location, startDate, endDate } =
   <div class="mb-3 sm:flex sm:flex-wrap sm:justify-between sm:gap-2">
     <div>
       <span class="flex items-center gap-2">
-        <H3>{organization}</H3>
-        <Link
-          ><a
-            href={organizationUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${organization} website`}
-            class="flex items-center"
-          >
-            <IconExternalLink />
-          </a>
-        </Link>
+        <H3>
+          <Link
+            ><a
+              href={organizationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center"
+            >
+              {organization}
+            </a>
+          </Link></H3
+        >
       </span>
       <p>{title}</p>
     </div>

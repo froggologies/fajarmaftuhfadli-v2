@@ -3,6 +3,8 @@ import Layout from "@/layouts/Layout.astro";
 
 import IconArrowBadgeRight from "@/components/icons/arrow-badge-right.astro";
 import IconExclamationCircle from "@/components/icons/exclamation-circle.astro";
+
+import Link from "@/components/Link.astro";
 ---
 
 <Layout title="404">
@@ -25,14 +27,13 @@ import IconExclamationCircle from "@/components/icons/exclamation-circle.astro";
     </p>
     <div class="flex items-center gap-2">
       <IconArrowBadgeRight />
-      <a
-        href="/"
-        class="group relative text-slate-100 transition-colors hover:text-blue-400"
-        >cd /home
-        <span
-          class="animate-blink absolute top-1 -right-[1ch] bottom-1 w-1 bg-gray-400 group-hover:bg-blue-400"
-        ></span>
-      </a>
+      <Link
+        ><a href="/" class="group relative"
+          >cd /home<span
+            class="animate-blink absolute top-0 -right-[1ch] bottom-0 w-1 bg-gray-400 group-hover:bg-blue-400"
+          ></span></a
+        >
+      </Link>
     </div>
   </div>
 </Layout>
