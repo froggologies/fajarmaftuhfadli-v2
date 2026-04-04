@@ -3,15 +3,17 @@ import Link from "@/components/Link.astro";
 ---
 
 <nav class="flex h-20 items-center justify-between p-7">
-  <div class="logo-container text-2xl font-black">
+  <div class="text-2xl font-black">
     <Link underline={false}>
       <a
         href="/"
-        class="inline-flex items-center transition-transform duration-300 hover:scale-110 active:scale-95"
+        class="group inline-flex items-center transition-transform duration-500 ease-out *:transition-transform *:duration-500 active:scale-95"
       >
-        <span class="f-mirrored inline-block">F</span>
-        <span class="m-letter inline-block">M</span>
-        <span class="f-letter inline-block">F</span>
+        <span class="inline-block scale-x-[-1] group-hover:-translate-x-1"
+          >F</span
+        >
+        <span class="inline-block">M</span>
+        <span class="inline-block group-hover:translate-x-1">F</span>
       </a>
     </Link>
   </div>
@@ -31,41 +33,3 @@ import Link from "@/components/Link.astro";
     </li>
   </ul>
 </nav>
-
-<style>
-  .logo-container a {
-    animation: float 4s ease-in-out infinite;
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-  }
-
-  .f-mirrored {
-    transform: scaleX(-1);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .m-letter,
-  .f-letter {
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .logo-container a:hover .f-mirrored {
-    transform: scaleX(-1) translateY(-4px) rotate(-10deg);
-  }
-
-  .logo-container a:hover .m-letter {
-    transform: translateY(-6px);
-  }
-
-  .logo-container a:hover .f-letter {
-    transform: translateY(-4px) rotate(10deg);
-  }
-</style>
