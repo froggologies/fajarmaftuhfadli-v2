@@ -8,6 +8,6 @@ const { underline = true, color = true } = Astro.props;
 ---
 
 <span
-  class={`*:transition-colors *:duration-300 *:hover:text-blue-400 *:active:text-blue-500 ${underline ? "*:underline *:decoration-slate-800 *:underline-offset-4 *:hover:decoration-blue-500 *:active:decoration-blue-500" : ""} ${color ? "*:text-slate-200" : ""}`}
+  class={`*:transition-colors *:duration-300 *:hover:text-blue-400 *:active:text-blue-500 ${underline && "*:underline *:decoration-slate-800 *:underline-offset-4 *:hover:decoration-blue-500 *:active:decoration-blue-500"} ${color && "*:text-slate-200"}`}
   ><slot /></span
 >
