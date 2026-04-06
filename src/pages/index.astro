@@ -21,7 +21,7 @@ import Spacer from "@/components/Spacer.astro";
       <p>
         <span class="flex items-center gap-2">
           Hey! I'm Fajar<span
-            class="origin-[70%_70%] animate-wave cursor-grab [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-slate-100 [&>svg]:transition-colors [&>svg]:duration-300 [&>svg]:hover:fill-blue-400 [&>svg]:active:fill-blue-500"
+            class="animate-wave origin-[70%_70%] cursor-grab [&>svg]:h-6 [&>svg]:w-6 [&>svg]:fill-slate-100 [&>svg]:transition-colors [&>svg]:duration-300 [&>svg]:hover:fill-blue-400 [&>svg]:active:fill-blue-500"
             ><IconWavingHand /></span
           >
         </span>
@@ -128,3 +128,36 @@ import Spacer from "@/components/Spacer.astro";
     </div>
   </Container>
 </Layout>
+
+<style>
+  .animate-wave {
+    animation: wave 2.5s infinite;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+    30% {
+      transform: rotate(14deg);
+    }
+    40% {
+      transform: rotate(-4deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+</style>
