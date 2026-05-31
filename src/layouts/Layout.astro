@@ -1,7 +1,7 @@
 ---
 import "@/styles/global.css";
 
-import CSSHoudiniRingParticles from "@/components/CSSHoudiniRingParticles.astro";
+import DotGridBackground from "@/components/DotGridBackground.astro";
 import Footer from "@/components/Footer.astro";
 import NavBar from "@/components/NavBar.astro";
 
@@ -34,9 +34,10 @@ const {
     />
     <title>{title}</title>
   </head>
-  <body class="flex min-h-screen flex-col">
+  <body class="relative flex min-h-screen flex-col">
+    <DotGridBackground />
     <NavBar />
-    <div class="flex flex-1 flex-col px-7 py-12">
+    <div class="relative z-10 flex flex-1 flex-col px-7 py-12">
       <main class="flex flex-1 flex-col items-start justify-center *:w-full">
         <slot />
       </main>
@@ -44,5 +45,3 @@ const {
     </div>
   </body>
 </html>
-
-<CSSHoudiniRingParticles />

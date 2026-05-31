@@ -1,0 +1,147 @@
+---
+
+---
+
+<canvas id="dot-grid-bg" aria-hidden="true"></canvas>
+
+<style>
+  #dot-grid-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.75;
+  }
+</style>
+
+<script>
+  // ─── Simplex Noise 2D ────────────────────────────────────────────────────────
+  // Lightweight implementation (Stefan Gustavson / public domain)
+  const perm = new Uint8Array(512);
+  const grad2: [number, number][] = [
+    [1, 1],
+    [-1, 1],
+    [1, -1],
+    [-1, -1],
+    [1, 0],
+    [-1, 0],
+    [0, 1],
+    [0, -1],
+  ];
+
+  (() => {
+    const p = new Uint8Array(256);
+    for (let i = 0; i < 256; i++) p[i] = i;
+    for (let i = 255; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [p[i], p[j]] = [p[j], p[i]];
+    }
+    for (let i = 0; i < 512; i++) perm[i] = p[i & 255];
+  })();
+
+  function noise2d(xin: number, yin: number): number {
+    const F2 = 0.5 * (Math.sqrt(3) - 1);
+    const G2 = (3 - Math.sqrt(3)) / 6;
+    const s = (xin + yin) * F2;
+    const i = Math.floor(xin + s);
+    const j = Math.floor(yin + s);
+    const tc = (i + j) * G2;
+    const x0 = xin - (i - tc);
+    const y0 = yin - (j - tc);
+    const i1 = x0 > y0 ? 1 : 0,
+      j1 = x0 > y0 ? 0 : 1;
+    const x1 = x0 - i1 + G2,
+      y1 = y0 - j1 + G2;
+    const x2 = x0 - 1 + 2 * G2,
+      y2 = y0 - 1 + 2 * G2;
+    const ii = i & 255,
+      jj = j & 255;
+    const g0 = grad2[perm[ii + perm[jj]] % 8];
+    const g1 = grad2[perm[ii + i1 + perm[jj + j1]] % 8];
+    const g2 = grad2[perm[ii + 1 + perm[jj + 1]] % 8];
+    let n = 0;
+    let c = 0.5 - x0 * x0 - y0 * y0;
+    if (c > 0) {
+      c *= c;
+      n += c * c * (g0[0] * x0 + g0[1] * y0);
+    }
+    c = 0.5 - x1 * x1 - y1 * y1;
+    if (c > 0) {
+      c *= c;
+      n += c * c * (g1[0] * x1 + g1[1] * y1);
+    }
+    c = 0.5 - x2 * x2 - y2 * y2;
+    if (c > 0) {
+      c *= c;
+      n += c * c * (g2[0] * x2 + g2[1] * y2);
+    }
+    return 70 * n; // [-1, 1]
+  }
+
+  // ─── Domain-Warped Noise ─────────────────────────────────────────────────────
+  // Two noise samples build a warp-offset vector; final sample uses warped coords.
+  // This creates swirling, fluid blob shapes instead of plain oval patches.
+  function warpedNoise(nx: number, ny: number, t: number): number {
+    const WARP = 1.2;
+    const wx = noise2d(nx + t, ny + t * 0.6);
+    const wy = noise2d(nx + 3.7 + t * 0.8, ny + 8.3 - t * 0.5);
+    return noise2d(nx + WARP * wx + t * 0.4, ny + WARP * wy + t * 0.3);
+  }
+
+  // ─── Canvas ──────────────────────────────────────────────────────────────────
+  const canvas = document.getElementById("dot-grid-bg") as HTMLCanvasElement;
+  const ctx = canvas.getContext("2d")!;
+
+  const DOT_SPACING = 18;
+  const DOT_RADIUS = 1.0;
+  const SPEED = 0.0006; // slow, gentle drift
+  const NOISE_SCALE = 0.0015; // lower = larger/more zoomed clusters
+  const THRESHOLD = 0.0;
+  const RAMP = 0.55; // wider = softer blob edges
+
+  let W = 0,
+    H = 0,
+    cols = 0,
+    rows = 0,
+    time = 0;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+    cols = Math.ceil(W / DOT_SPACING) + 2;
+    rows = Math.ceil(H / DOT_SPACING) + 2;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    time += SPEED;
+
+    for (let row = 0; row < rows; row++) {
+      const y = row * DOT_SPACING;
+      for (let col = 0; col < cols; col++) {
+        const x = col * DOT_SPACING;
+        const n = warpedNoise(x * NOISE_SCALE, y * NOISE_SCALE, time);
+
+        if (n > THRESHOLD) {
+          const strength = Math.min((n - THRESHOLD) / RAMP, 1);
+          // Smoothstep for softer edge crossfades
+          const s = strength * strength * (3 - 2 * strength);
+          const alpha = 0.01 + s * 0.25; // range ~0.01–0.45 for visible gradient
+
+          ctx.beginPath();
+          ctx.arc(x, y, DOT_RADIUS, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
+          ctx.fill();
+        }
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  draw();
+</script>
