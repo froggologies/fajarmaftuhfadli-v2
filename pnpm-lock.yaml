@@ -17,9 +17,6 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.2.0(vite@7.3.3(jiti@2.6.1)(lightningcss@1.31.1))
-      '@types/canvas-confetti':
-        specifier: ^1.9.0
-        version: 1.9.0
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -29,15 +26,6 @@ importers:
       astro:
         specifier: ^6.4.2
         version: 6.4.2(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)
-      canvas-confetti:
-        specifier: ^1.9.4
-        version: 1.9.4
-      css-houdini-ringparticles:
-        specifier: ^1.1.0
-        version: 1.1.0
-      css-paint-polyfill:
-        specifier: ^3.4.0
-        version: 3.4.0
       react:
         specifier: ^19.2.4
         version: 19.2.4
@@ -839,9 +827,6 @@ packages:
   '@types/babel__traverse@7.28.0':
     resolution: {integrity: sha512-8PvcXf70gTDZBgt9ptxJ8elBeBjcLOAcOtoO/mPJjtji1+CdGbHgm77om1GrsPxsiE+uXIpNSK64UYaIwQXd4Q==}
 
-  '@types/canvas-confetti@1.9.0':
-    resolution: {integrity: sha512-aBGj/dULrimR1XDZLtG9JwxX1b4HPRF6CX9Yfwh3NvstZEm1ZL7RBnel4keCPSqs1ANRu1u2Aoz9R+VmtjYuTg==}
-
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
 
@@ -949,9 +934,6 @@ packages:
   caniuse-lite@1.0.30001774:
     resolution: {integrity: sha512-DDdwPGz99nmIEv216hKSgLD+D4ikHQHjBC/seF98N9CPqRX4M5mSxT9eTV6oyisnJcuzxtZy4n17yKKQYmYQOA==}
 
-  canvas-confetti@1.9.4:
-    resolution: {integrity: sha512-yxQbJkAVrFXWNbTUjPqjF7G+g6pDotOUHGbkZq2NELZUMDpiJ85rIEazVb8GTaAptNW2miJAXbs1BtioA251Pw==}
-
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
 
@@ -1005,12 +987,6 @@ packages:
 
   crossws@0.3.5:
     resolution: {integrity: sha512-ojKiDvcmByhwa8YYqbQI/hg7MEU0NC03+pSdEq4ZUnZR9xXpwk7E43SMNGkn+JxJGPFtNvQ48+vV2p+P1ml5PA==}
-
-  css-houdini-ringparticles@1.1.0:
-    resolution: {integrity: sha512-t+xBCqaW1QgZ9d/dTVXWN4KmS1Uo1nfddO+u+bL4jY1sqCj+tFRLLCSp9qk1PLd2xb2nTcTIb4krJp+ohKc2qA==}
-
-  css-paint-polyfill@3.4.0:
-    resolution: {integrity: sha512-B89ymLgMZie41d+QrD//5RWnwykvru5H9Yzd/MMJIgPdVsKB7t4lxuhIAyzy5FnoUbb0MztagNVRe9dI7kMbiA==}
 
   css-select@5.2.2:
     resolution: {integrity: sha512-TizTzUddG/xYLA3NXodFM0fSbNizXjOKhqiQQwvhlspadZokn1KDy0NZFS0wuEubIYAV5/c1/lAr0TaaFXEXzw==}
@@ -2825,8 +2801,6 @@ snapshots:
     dependencies:
       '@babel/types': 7.29.0
 
-  '@types/canvas-confetti@1.9.0': {}
-
   '@types/debug@4.1.12':
     dependencies:
       '@types/ms': 2.1.0
@@ -3011,8 +2985,6 @@ snapshots:
 
   caniuse-lite@1.0.30001774: {}
 
-  canvas-confetti@1.9.4: {}
-
   ccount@2.0.1: {}
 
   character-entities-html4@2.1.0: {}
@@ -3048,10 +3020,6 @@ snapshots:
   crossws@0.3.5:
     dependencies:
       uncrypto: 0.1.3
-
-  css-houdini-ringparticles@1.1.0: {}
-
-  css-paint-polyfill@3.4.0: {}
 
   css-select@5.2.2:
     dependencies:

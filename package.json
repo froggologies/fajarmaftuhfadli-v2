@@ -12,13 +12,9 @@
     "@astrojs/mdx": "^6.0.1",
     "@astrojs/react": "^5.0.6",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/canvas-confetti": "^1.9.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.4.2",
-    "canvas-confetti": "^1.9.4",
-    "css-houdini-ringparticles": "^1.1.0",
-    "css-paint-polyfill": "^3.4.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.1.18"
