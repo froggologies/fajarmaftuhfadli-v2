@@ -107,6 +107,24 @@
     rows = 0,
     time = 0;
 
+  // ─── Mouse Interaction ──────────────────────────────────────────────────────
+  let mouse = { x: 0, y: 0, targetX: 0, targetY: 0, active: false };
+
+  window.addEventListener("mousemove", (e) => {
+    mouse.targetX = e.clientX;
+    mouse.targetY = e.clientY;
+    // On first move, snap mouse to position to avoid slide-in from (0,0)
+    if (!mouse.active) {
+      mouse.x = mouse.targetX;
+      mouse.y = mouse.targetY;
+    }
+    mouse.active = true;
+  });
+
+  window.addEventListener("mouseleave", () => {
+    mouse.active = false;
+  });
+
   function resize() {
     W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
@@ -118,6 +136,12 @@
     ctx.clearRect(0, 0, W, H);
     time += SPEED;
 
+    // Lerp mouse coordinates
+    if (mouse.active) {
+      mouse.x += (mouse.targetX - mouse.x) * 0.3;
+      mouse.y += (mouse.targetY - mouse.y) * 0.3;
+    }
+
     for (let row = 0; row < rows; row++) {
       const y = row * DOT_SPACING;
       for (let col = 0; col < cols; col++) {
@@ -128,7 +152,7 @@
           const strength = Math.min((n - THRESHOLD) / RAMP, 1);
           // Smoothstep for softer edge crossfades
           const s = strength * strength * (3 - 2 * strength);
-          const alpha = 0.01 + s * 0.3; // range ~0.01–0.45 for visible gradient
+          let alpha = 0.01 + s * 0.3; // range ~0.01–0.45 for visible gradient
 
           // Calculate gradient to shift dots toward cluster centers
           const epsilon = 10;
@@ -158,8 +182,28 @@
           const dx = (nRight - nLeft) * shiftMultiplier;
           const dy = (nDown - nUp) * shiftMultiplier;
 
+          let finalX = x + dx;
+          let finalY = y + dy;
+
+          // Mouse influence
+          if (mouse.active) {
+            const distX = finalX - mouse.x;
+            const distY = finalY - mouse.y;
+            const dist = Math.hypot(distX, distY);
+            const radius = 180;
+
+            if (dist < radius) {
+              const force = (radius - dist) / radius; // 1 at center, 0 at edge
+              const push = force * 24; // max push pixels
+
+              finalX += (distX / (dist || 1)) * push;
+              finalY += (distY / (dist || 1)) * push;
+              alpha = Math.min(alpha + force * 0.45, 0.85); // brighten
+            }
+          }
+
           ctx.beginPath();
-          ctx.arc(x + dx, y + dy, DOT_RADIUS, 0, Math.PI * 2);
+          ctx.arc(finalX, finalY, DOT_RADIUS, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
           ctx.fill();
         }
