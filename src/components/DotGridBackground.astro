@@ -128,7 +128,7 @@
           const strength = Math.min((n - THRESHOLD) / RAMP, 1);
           // Smoothstep for softer edge crossfades
           const s = strength * strength * (3 - 2 * strength);
-          const alpha = 0.01 + s * 0.5; // range ~0.01–0.45 for visible gradient
+          const alpha = 0.01 + s * 0.3; // range ~0.01–0.45 for visible gradient
 
           // Calculate gradient to shift dots toward cluster centers
           const epsilon = 10;
