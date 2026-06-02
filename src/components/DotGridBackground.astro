@@ -128,10 +128,38 @@
           const strength = Math.min((n - THRESHOLD) / RAMP, 1);
           // Smoothstep for softer edge crossfades
           const s = strength * strength * (3 - 2 * strength);
-          const alpha = 0.01 + s * 0.25; // range ~0.01–0.45 for visible gradient
+          const alpha = 0.01 + s * 0.5; // range ~0.01–0.45 for visible gradient
+
+          // Calculate gradient to shift dots toward cluster centers
+          const epsilon = 10;
+          const nLeft = warpedNoise(
+            (x - epsilon) * NOISE_SCALE,
+            y * NOISE_SCALE,
+            time,
+          );
+          const nRight = warpedNoise(
+            (x + epsilon) * NOISE_SCALE,
+            y * NOISE_SCALE,
+            time,
+          );
+          const nUp = warpedNoise(
+            x * NOISE_SCALE,
+            (y - epsilon) * NOISE_SCALE,
+            time,
+          );
+          const nDown = warpedNoise(
+            x * NOISE_SCALE,
+            (y + epsilon) * NOISE_SCALE,
+            time,
+          );
+
+          // Displace dot toward higher noise intensity
+          const shiftMultiplier = 16;
+          const dx = (nRight - nLeft) * shiftMultiplier;
+          const dy = (nDown - nUp) * shiftMultiplier;
 
           ctx.beginPath();
-          ctx.arc(x, y, DOT_RADIUS, 0, Math.PI * 2);
+          ctx.arc(x + dx, y + dy, DOT_RADIUS, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(255,255,255,${alpha.toFixed(3)})`;
           ctx.fill();
         }
