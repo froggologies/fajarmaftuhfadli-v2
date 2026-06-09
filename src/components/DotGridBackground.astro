@@ -1,6 +1,6 @@
 ---
 interface Props {
-  mode?: "perlin-flow-field";
+  mode?: "perlin-flow-field" | "simplex";
   dotSpacing?: number;
   dotRadius?: number;
   speed?: number;
@@ -51,6 +51,7 @@ const {
 
 <script>
   import { drawPerlinFlowField } from "../lib/noise/perlinFlowFieldMode";
+  import { drawSimplex } from "../lib/noise/simplexMode";
 
   const canvas = document.getElementById("dot-grid-bg") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d")!;
@@ -112,6 +113,8 @@ const {
 
     if (mode === "perlin-flow-field") {
       drawPerlinFlowField(ctx, cols, rows, time, config, mouse);
+    } else if (mode === "simplex") {
+      drawSimplex(ctx, cols, rows, time, config, mouse);
     }
 
     requestAnimationFrame(draw);
