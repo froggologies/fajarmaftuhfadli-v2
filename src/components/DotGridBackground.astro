@@ -1,6 +1,6 @@
 ---
 interface Props {
-  mode?: "perlin-flow-field" | "simplex";
+  mode?: "perlin-flow-field" | "simplex" | "vortex";
   dotSpacing?: number;
   dotRadius?: number;
   speed?: number;
@@ -52,6 +52,7 @@ const {
 <script>
   import { drawPerlinFlowField } from "../lib/noise/perlinFlowFieldMode";
   import { drawSimplex } from "../lib/noise/simplexMode";
+  import { drawVortex } from "../lib/noise/vortexMode";
 
   const canvas = document.getElementById("dot-grid-bg") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d")!;
@@ -115,6 +116,8 @@ const {
       drawPerlinFlowField(ctx, cols, rows, time, config, mouse);
     } else if (mode === "simplex") {
       drawSimplex(ctx, cols, rows, time, config, mouse);
+    } else if (mode === "vortex") {
+      drawVortex(ctx, cols, rows, time, config, mouse);
     }
 
     requestAnimationFrame(draw);
