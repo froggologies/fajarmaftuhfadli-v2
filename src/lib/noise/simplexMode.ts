@@ -1,4 +1,4 @@
-import { noise2d } from "./noise";
+import { noise2d, warpedNoise } from "./noise";
 import type { DotConfig, MouseState } from "./dotGridTypes";
 
 export function drawSimplex(
@@ -17,20 +17,24 @@ export function drawSimplex(
       let finalX = x;
       let finalY = y;
 
-      // Perlin flow uses Math.cos((n+1)*PI). Cosine doubles visual frequency 
-      // of noise `n`. To match Perlin's 0.0025 visual scale, Simplex needs 0.005.
-      const scale = 0.005 / config.patternScale;
-      // Match perlin flow field time multiplier (1.8)
-      const nX = noise2d(x * scale + time * 1.8, y * scale + time * 1.8);
-      const nY = noise2d(x * scale - time * 1.8, y * scale - time * 1.8);
+      // Use Simplex for a "Wobble Field" (coordinated circular orbits)
+      const scale = 0.0035 / config.patternScale;
 
-      // Simplex movement
-      const moveStrength = 14;
-      finalX += nX * moveStrength;
-      finalY += nY * moveStrength;
+      // Base noise field drifting upwards faster
+      const n = noise2d(x * scale, y * scale - time * 1.6);
 
-      // Map noise to opacity (match perlin alpha 0.08 multiplier)
-      let alpha = (0.12 + (nX + 1) * 0.08) * config.opacityMultiplier;
+      // Smooth orbit phase (reduced noise multiplier to stop harsh crests)
+      const phase = (x + y) * 0.005 + n * Math.PI * 0.8;
+
+      // Smoother radius variation (less extreme)
+      const moveStrength = 12 + 4 * n;
+
+      // Much faster continuous orbit
+      finalX += Math.cos(time * 5.0 + phase) * moveStrength;
+      finalY += Math.sin(time * 5.0 + phase) * moveStrength;
+
+      // Map noise to opacity
+      let alpha = (0.15 + (n + 1) * 0.15) * config.opacityMultiplier;
 
       // Mouse influence
       if (mouse.active) {

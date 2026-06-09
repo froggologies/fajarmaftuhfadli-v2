@@ -20,7 +20,10 @@ export function drawPerlinFlowField(
       const n = noise2d(x * flowScale, y * flowScale + time * 1.8);
       const angle = (n + 1) * Math.PI; // Map [-1, 1] to [0, 2*PI]
 
-      const flowStrength = 14;
+      // Secondary noise for "wind gusts" (areas of high/low energy)
+      const gust = noise2d(x * flowScale * 0.5 - time, y * flowScale * 0.5);
+      const flowStrength = 14 * (0.5 + (gust + 1) * 0.5); // Ranges from 7 to 21
+
       let finalX = x + Math.cos(angle) * flowStrength;
       let finalY = y + Math.sin(angle) * flowStrength;
 
