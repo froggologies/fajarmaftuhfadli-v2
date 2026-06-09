@@ -1,6 +1,6 @@
 ---
 interface Props {
-  mode?: "simplex-clusters" | "perlin-flow-field";
+  mode?: "perlin-flow-field";
   dotSpacing?: number;
   dotRadius?: number;
   speed?: number;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const {
-  mode = "simplex-clusters",
+  mode = "perlin-flow-field",
   dotSpacing = 18,
   dotRadius = 1.0,
   speed = 0.0006,
@@ -35,8 +35,7 @@ const {
   data-mouse-speed={mouseSpeed}
   data-opacity-multiplier={opacityMultiplier}
   data-pattern-scale={patternScale}
-  aria-hidden="true"
-></canvas>
+  aria-hidden="true"></canvas>
 
 <style>
   #dot-grid-bg {
@@ -51,7 +50,6 @@ const {
 </style>
 
 <script>
-  import { drawSimplexClusters } from "../lib/noise/simplexClustersMode";
   import { drawPerlinFlowField } from "../lib/noise/perlinFlowFieldMode";
 
   const canvas = document.getElementById("dot-grid-bg") as HTMLCanvasElement;
@@ -59,8 +57,8 @@ const {
 
   // Read config from dataset
   const dataset = canvas.dataset;
-  const mode = dataset.mode || "simplex-clusters";
-  
+  const mode = dataset.mode;
+
   const config = {
     dotSpacing: Number(dataset.dotSpacing) || 18,
     dotRadius: Number(dataset.dotRadius) || 1.0,
@@ -112,9 +110,7 @@ const {
       mouse.y += (mouse.targetY - mouse.y) * config.mouseSpeed;
     }
 
-    if (mode === "simplex-clusters") {
-      drawSimplexClusters(ctx, cols, rows, time, config, mouse);
-    } else {
+    if (mode === "perlin-flow-field") {
       drawPerlinFlowField(ctx, cols, rows, time, config, mouse);
     }
 
