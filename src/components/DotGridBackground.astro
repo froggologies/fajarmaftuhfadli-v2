@@ -11,8 +11,11 @@ interface Props {
   patternScale?: number;
 }
 
+const modes: ("perlin-flow-field" | "simplex" | "vortex")[] = ["perlin-flow-field", "simplex", "vortex"];
+const defaultMode = modes[Math.floor(Math.random() * modes.length)];
+
 const {
-  mode = "perlin-flow-field",
+  mode = defaultMode,
   dotSpacing = 18,
   dotRadius = 1.0,
   speed = 0.0006,
