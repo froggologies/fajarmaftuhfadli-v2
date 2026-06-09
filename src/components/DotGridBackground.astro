@@ -1,6 +1,6 @@
 ---
 interface Props {
-  mode?: "perlin-flow-field" | "simplex" | "vortex";
+  mode?: "perlin-flow-field" | "simplex" | "vortex" | "river";
   dotSpacing?: number;
   dotRadius?: number;
   speed?: number;
@@ -11,7 +11,7 @@ interface Props {
   patternScale?: number;
 }
 
-const modes: ("perlin-flow-field" | "simplex" | "vortex")[] = ["perlin-flow-field", "simplex", "vortex"];
+const modes: ("perlin-flow-field" | "simplex" | "vortex" | "river")[] = ["perlin-flow-field", "simplex", "vortex", "river"];
 const defaultMode = modes[Math.floor(Math.random() * modes.length)];
 
 const {
@@ -56,6 +56,7 @@ const {
   import { drawPerlinFlowField } from "../lib/noise/perlinFlowFieldMode";
   import { drawSimplex } from "../lib/noise/simplexMode";
   import { drawVortex } from "../lib/noise/vortexMode";
+  import { drawRiver } from "../lib/noise/riverMode";
 
   const canvas = document.getElementById("dot-grid-bg") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d")!;
@@ -121,6 +122,8 @@ const {
       drawSimplex(ctx, cols, rows, time, config, mouse);
     } else if (mode === "vortex") {
       drawVortex(ctx, cols, rows, time, config, mouse);
+    } else if (mode === "river") {
+      drawRiver(ctx, cols, rows, time, config, mouse);
     }
 
     requestAnimationFrame(draw);
