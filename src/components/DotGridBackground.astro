@@ -1,6 +1,6 @@
 ---
 interface Props {
-  mode?: "perlin-flow-field" | "simplex" | "vortex" | "river";
+  mode?: "perlin-flow-field" | "simplex" | "vortex" | "river" | "random";
   dotSpacing?: number;
   dotRadius?: number;
   speed?: number;
@@ -11,11 +11,8 @@ interface Props {
   patternScale?: number;
 }
 
-const modes: ("perlin-flow-field" | "simplex" | "vortex" | "river")[] = ["perlin-flow-field", "simplex", "vortex", "river"];
-const defaultMode = modes[Math.floor(Math.random() * modes.length)];
-
 const {
-  mode = defaultMode,
+  mode = "random",
   dotSpacing = 18,
   dotRadius = 1.0,
   speed = 0.0006,
@@ -63,7 +60,12 @@ const {
 
   // Read config from dataset
   const dataset = canvas.dataset;
-  const mode = dataset.mode;
+  let mode = dataset.mode;
+
+  if (mode === "random" || !mode) {
+    const availableModes = ["perlin-flow-field", "simplex", "vortex", "river"];
+    mode = availableModes[Math.floor(Math.random() * availableModes.length)];
+  }
 
   const config = {
     dotSpacing: Number(dataset.dotSpacing) || 18,
